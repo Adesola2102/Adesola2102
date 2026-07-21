@@ -1,0 +1,25 @@
+# Core pipeline dependencies
+scikit-learn==1.9.0
+pandas==3.0.3
+numpy==2.4.6
+scipy==1.17.1
+joblib==1.5.3
+
+# XAI (Chapter Three, Component 3)
+shap==0.51.0
+lime==0.2.0.1
+
+# User Interface (Chapter Three, Component 5)
+streamlit==1.60.0
+
+# Evaluation (Chapter Five / Objective V)
+textstat==0.7.13
+
+# Testing
+pytest==9.1.1
+
+# Optional: only required if PHISHGUARD_LLM_MODEL_PATH is set to a local
+# GGUF model for the optional LlamaCppBackend translation backend (see
+# phishguard/translation/backend.py). Not required for the default
+# TemplateBackend used throughout this build.
+# llama-cpp-python
