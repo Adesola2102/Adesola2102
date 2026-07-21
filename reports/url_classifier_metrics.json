@@ -1,0 +1,42 @@
+{
+  "accuracy": 0.8791666666666667,
+  "precision": 0.922077922077922,
+  "recall": 0.8283333333333334,
+  "f1": 0.8726953467954346,
+  "confusion_matrix": [
+    [
+      1116,
+      84
+    ],
+    [
+      206,
+      994
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "legitimate",
+    "phishing"
+  ],
+  "n_train": 9600,
+  "n_test": 2400,
+  "feature_importances": {
+    "num_subdomains": 0.24421954246772612,
+    "url_length": 0.15740678515638465,
+    "num_dots": 0.15612573424382767,
+    "domain_entropy": 0.1364440329279121,
+    "domain_length": 0.12491932107276553,
+    "num_digits": 0.04807268509456115,
+    "suspicious_tld": 0.04427000667446997,
+    "num_hyphens": 0.04219059332069503,
+    "digit_ratio": 0.03874319558904266,
+    "has_https": 0.004164340374187212,
+    "brand_keyword_in_subdomain": 0.0020365472286684675,
+    "has_ip_address": 0.0011833830347889136,
+    "num_path_segments": 0.00010497065068719779,
+    "path_length": 0.00010347548994621016,
+    "is_shortener": 1.538667433717052e-05,
+    "has_at_symbol": 0.0,
+    "num_special_chars": 0.0,
+    "query_length": 0.0
+  }
+}
