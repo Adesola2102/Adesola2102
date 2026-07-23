@@ -117,8 +117,13 @@ def main() -> None:
                 "Thanks, Sarah"
             )
 
-        subject = st.text_input("Subject", value=subject_default, key="email_subject")
-        body = st.text_area("Body", value=body_default, height=180, key="email_body")
+        if st.session_state.get("_email_example_applied") != example:
+            st.session_state["email_subject"] = subject_default
+            st.session_state["email_body"] = body_default
+            st.session_state["_email_example_applied"] = example
+
+        subject = st.text_input("Subject", key="email_subject")
+        body = st.text_area("Body", height=180, key="email_body")
 
         if st.button("Analyse Email", type="primary", key="analyse_email"):
             if not subject.strip() and not body.strip():
@@ -145,7 +150,11 @@ def main() -> None:
         elif example_url == "Legitimate example - well-known site":
             url_default = "https://www.wikipedia.org/"
 
-        url = st.text_input("URL", value=url_default, key="url_input")
+        if st.session_state.get("_url_example_applied") != example_url:
+            st.session_state["url_input"] = url_default
+            st.session_state["_url_example_applied"] = example_url
+
+        url = st.text_input("URL", key="url_input")
 
         if st.button("Analyse URL", type="primary", key="analyse_url"):
             if not url.strip():
