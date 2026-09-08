@@ -33,14 +33,48 @@ Email (genuine phishing/fraud vs. legitimate):
     mbox-parsing artifacts (e.g. "DON'T DELETE THIS MESSAGE -- FOLDER
     INTERNAL DATA" placeholder rows, ~0.5% of rows) are filtered out below.
 
-URL / domain (phishing vs. legitimate):
-    - Phishing domains: Phishing.Database project (continuously updated,
-      community-maintained active-phishing-domain blocklist), used here as a
-      direct substitute for the PhishTank feed (which now requires a
-      registered API key to query programmatically):
+URL (phishing vs. legitimate, full URLs with real paths/query strings):
+    - Phishing: PhishTank's verified-phish feed, plus Phishing.Database's
+      full-link list (not just its bare-domain list), combined and
+      deduplicated:
+      https://github.com/ProKn1fe/phishtank-database (PhishTank mirror,
+        refreshed every 24h - phishtank.com's own data.phishtank.com feed
+        is not directly reachable from this build environment's network
+        policy, so this GitHub mirror is used instead)
       https://github.com/mitchellkrogza/Phishing.Database
-    - Legitimate domains: OpenDNS public top-domains list:
-      https://github.com/opendns/public-domain-lists
+        (file: phishing-links-ACTIVE.txt)
+    - Legitimate: a labelled URL set giving many distinct real domains
+      *with* their real paths (not just bare domains), republished on
+      GitHub:
+      https://github.com/jishnusaurav/Phishing-attack-PCAP-analysis-using-scapy
+      (file: Phishing-Website-Detection/datasets/legitimate-urls.csv,
+      reconstructed from its Protocol/Domain/Path columns)
+
+    NOTE ON SAMPLE SIZE (~1,000/class instead of the email side's 3,000):
+    hundreds of thousands of phishing URLs are readily available, but a
+    directly-fetchable *legitimate* URL corpus that preserves genuine paths
+    and query strings (rather than bare domains) is comparatively scarce -
+    the source above tops out around 1,000 usable rows across ~670 distinct
+    domains. The alternative (pad the legitimate class with bare domains
+    from a larger list, e.g. OpenDNS's top-domains list, to hit a bigger
+    sample size) was rejected: it would let the classifier partly "cheat"
+    by learning "has a path/query -> more likely phishing" - an artefact of
+    how the data was built, not a genuine phishing signal. A smaller but
+    structurally matched dataset, where both classes have genuine path/
+    query diversity, is preferred over a larger but structurally lopsided
+    one.
+
+    NOTE ON SCHEME (http/https): the legitimate-URL source above predates
+    HTTPS's near-universal adoption, so *as collected*, 100% of its rows
+    are http:// while the (currently-live) phishing feeds are ~79% https -
+    a dataset-vintage confound with nothing to do with phishing (verified:
+    with scheme left as-collected, has_https became the single dominant
+    trained feature at 41% importance, for entirely the wrong reason).
+    build_url_dataset() re-randomizes scheme independent of label (70%
+    https, matching modern web-wide adoption) rather than letting the
+    classifier learn "which decade is this URL from" as a phishing proxy -
+    the same class of shortcut the URL scheme was already kept independent
+    of label to avoid before real full URLs replaced bare domains here.
 
 Usage
 -----
@@ -55,6 +89,7 @@ from __future__ import annotations
 
 import io
 import random
+import re
 import sys
 import urllib.request
 from pathlib import Path
@@ -66,7 +101,7 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 SEED = 42
 EMAIL_SAMPLE_PER_CLASS = 3000
-URL_SAMPLE_PER_CLASS = 6000
+URL_SAMPLE_PER_CLASS = 1000
 
 PHISHING_EMAIL_REPO = (
     "https://raw.githubusercontent.com/rokibulroni/Phishing-Email-Dataset/main"
@@ -74,13 +109,18 @@ PHISHING_EMAIL_REPO = (
 NAZARIO_URL = f"{PHISHING_EMAIL_REPO}/Nazario.csv"
 NIGERIAN_FRAUD_URL = f"{PHISHING_EMAIL_REPO}/Nigerian_Fraud.csv"
 ENRON_HAM_URL = f"{PHISHING_EMAIL_REPO}/Enron.csv"
-PHISHING_DOMAINS_URL = (
-    "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/"
-    "master/phishing-domains-ACTIVE.txt"
+PHISHTANK_MIRROR_URL = (
+    "https://raw.githubusercontent.com/ProKn1fe/phishtank-database/"
+    "master/online-valid.json"
 )
-LEGIT_DOMAINS_URL = (
-    "https://raw.githubusercontent.com/opendns/public-domain-lists/"
-    "master/opendns-top-domains.txt"
+PHISHING_DATABASE_LINKS_URL = (
+    "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/"
+    "master/phishing-links-ACTIVE.txt"
+)
+LEGIT_URLS_WITH_PATHS_URL = (
+    "https://raw.githubusercontent.com/jishnusaurav/"
+    "Phishing-attack-PCAP-analysis-using-scapy/master/"
+    "Phishing-Website-Detection/datasets/legitimate-urls.csv"
 )
 
 
@@ -140,40 +180,56 @@ def build_email_dataset() -> None:
 
 
 def build_url_dataset() -> None:
-    print(f"Downloading phishing domains from {PHISHING_DOMAINS_URL} ...")
-    phishing_raw = fetch(PHISHING_DOMAINS_URL).decode("utf-8", errors="ignore")
-    phishing_domains = [
-        line.strip() for line in phishing_raw.splitlines() if line.strip()
+    print(f"Downloading PhishTank feed (GitHub mirror) from {PHISHTANK_MIRROR_URL} ...")
+    phishtank = pd.read_json(io.BytesIO(fetch(PHISHTANK_MIRROR_URL)))
+    phishtank_urls = phishtank["url"].dropna().astype(str).tolist()
+
+    print(f"Downloading Phishing.Database full links from {PHISHING_DATABASE_LINKS_URL} ...")
+    links_raw = fetch(PHISHING_DATABASE_LINKS_URL).decode("utf-8", errors="ignore")
+    database_urls = [
+        line.strip()
+        for line in links_raw.splitlines()
+        if line.strip().startswith(("http://", "https://"))
     ]
 
-    print(f"Downloading legitimate domains from {LEGIT_DOMAINS_URL} ...")
-    legit_raw = fetch(LEGIT_DOMAINS_URL).decode("utf-8", errors="ignore")
-    legit_domains = [line.strip() for line in legit_raw.splitlines() if line.strip()]
+    print(f"Downloading legitimate URLs (with real paths) from {LEGIT_URLS_WITH_PATHS_URL} ...")
+    legit_df = pd.read_csv(io.BytesIO(fetch(LEGIT_URLS_WITH_PATHS_URL)))
+    legit_urls = (
+        legit_df["Protocol"].astype(str)
+        + "://"
+        + legit_df["Domain"].astype(str)
+        + legit_df["Path"].fillna("").astype(str)
+    ).tolist()
 
     rng = random.Random(SEED)
+
+    # dict.fromkeys dedupes exact-string overlap (Phishing.Database partly
+    # aggregates from other feeds, PhishTank included) while preserving order.
+    phishing_pool = list(dict.fromkeys(phishtank_urls + database_urls))
     phishing_sample = rng.sample(
-        phishing_domains, min(URL_SAMPLE_PER_CLASS, len(phishing_domains))
-    )
-    legit_sample = rng.sample(
-        legit_domains, min(URL_SAMPLE_PER_CLASS, len(legit_domains))
+        phishing_pool, min(URL_SAMPLE_PER_CLASS, len(phishing_pool))
     )
 
-    # NOTE: scheme (http/https) is assigned independently of the label (70%
-    # https, matching the overall modern-web HTTPS adoption rate) rather than
-    # being deterministically tied to phishing/legitimate. The raw domain
-    # lists do not record which scheme was actually observed, and encoding
-    # scheme-by-label would let the classifier "cheat" by keying on an
-    # artefact of this data-construction step instead of a genuine lexical
-    # signal (HTTPS adoption among phishing sites is now high in practice).
-    def _rows_for(domains: list, label: str) -> list:
-        out = []
-        for d in domains:
-            scheme = "https" if rng.random() < 0.7 else "http"
-            out.append({"url": f"{scheme}://{d}/", "label": label})
-        return out
+    legit_pool = list(dict.fromkeys(legit_urls))
+    legit_sample = rng.sample(legit_pool, min(URL_SAMPLE_PER_CLASS, len(legit_pool)))
 
-    rows = _rows_for(phishing_sample, "phishing")
-    rows += _rows_for(legit_sample, "legitimate")
+    # NOTE ON SCHEME (http/https): the legitimate-URL source is an older
+    # (pre-HTTPS-ubiquity) crawl, while PhishTank/Phishing.Database reflect
+    # today's web - so *as observed*, scheme is almost perfectly correlated
+    # with label (100% of legitimate rows are http, ~79% of phishing rows
+    # are https) purely because of when each source was collected, not
+    # because that reflects reality. Left alone, has_https became the
+    # single dominant feature (41% of importance) for entirely the wrong
+    # reason. Re-randomizing scheme independent of label - as this script
+    # already did before real full URLs replaced bare domains - removes
+    # that dataset-vintage confound instead of letting the classifier learn
+    # "which decade is this URL from" as a proxy for phishing.
+    def _rerandomize_scheme(url: str) -> str:
+        scheme = "https" if rng.random() < 0.7 else "http"
+        return re.sub(r"^https?://", f"{scheme}://", url, count=1)
+
+    rows = [{"url": _rerandomize_scheme(u), "label": "phishing"} for u in phishing_sample]
+    rows += [{"url": _rerandomize_scheme(u), "label": "legitimate"} for u in legit_sample]
 
     df = pd.DataFrame(rows).sample(frac=1, random_state=SEED).reset_index(drop=True)
     out_path = RAW_DIR / "url_dataset.csv"
