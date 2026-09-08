@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import math
 import re
+from types import SimpleNamespace
 from urllib.parse import urlsplit
 
 import pandas as pd
@@ -104,9 +105,21 @@ def extract_url_features(url: str) -> dict:
     if "://" not in raw:
         raw = "http://" + raw
 
-    parts = urlsplit(raw)
-    hostname = (parts.hostname or "").lower()
-    netloc = parts.netloc.lower()
+    try:
+        parts = urlsplit(raw)
+        hostname = (parts.hostname or "").lower()
+        netloc = parts.netloc.lower()
+    except ValueError:
+        # Real-world phishing text sometimes embeds malformed/obfuscated
+        # "URLs" (stray brackets, broken bracketed-IPv6 syntax, etc.) that
+        # urlsplit rejects outright. Treat these as unparseable rather than
+        # crashing the pipeline: string-level features (length, digit ratio,
+        # special-char count below) still apply, host-structure features
+        # just fall back to their empty/absent defaults - a malformed URL is
+        # itself a signal a well-formed one would never produce.
+        parts = SimpleNamespace(scheme="", netloc="", path="", query="")
+        hostname = ""
+        netloc = ""
 
     registrable_domain, subdomains = _split_registrable_domain(hostname)
     # "www" is by far the most common legitimate subdomain label; counting it
