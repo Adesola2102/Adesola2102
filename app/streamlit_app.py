@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from phishguard.data.email_features import EmailInput  # noqa: E402
+from phishguard.data.url_features import is_analysable_url  # noqa: E402
 from phishguard.pipeline import PhishingExplanationPipeline  # noqa: E402
 
 st.set_page_config(
@@ -159,6 +160,16 @@ def main() -> None:
         if st.button("Analyse URL", type="primary", key="analyse_url"):
             if not url.strip():
                 st.warning("Please enter a URL.")
+            elif not is_analysable_url(url):
+                # The feature extractor would happily assign a full vector to
+                # any string and the classifier would return a confident
+                # verdict for it. Refuse rather than explain something the
+                # input does not support.
+                st.warning(
+                    "That does not look like a web address. Enter a full URL, "
+                    "such as https://example.com/page, so the analysis "
+                    "describes something real."
+                )
             else:
                 with st.spinner("Classifying, computing SHAP/LIME, translating..."):
                     result = pipeline.analyze_url(url.strip())
@@ -166,10 +177,10 @@ def main() -> None:
 
     st.divider()
     st.caption(
-        "Prototype system built for the MIT Professional Master's Project: "
-        "\"An Explainable Translation Layer for Converting SHAP/LIME Outputs "
-        "into Human-Readable Phishing Alerts Using a Lightweight Open-Source "
-        "LLM\" — runs fully offline/locally (no external API calls)."
+        "Built for the MIT Professional Master's Project: "
+        "\"Explainable URL/Email Phishing Detection System Using Random Forest "
+        "and SHAP-LIME Outputs for Generating Human-Readable Phishing Alerts\" "
+        "— runs fully offline/locally (no external API calls)."
     )
 
 
