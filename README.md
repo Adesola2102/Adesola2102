@@ -42,7 +42,7 @@ python scripts/run_evaluation.py
 #    -> reports/performance_metrics.json
 python scripts/measure_performance.py
 
-# 4. Run the tests (51 tests)
+# 4. Run the tests (66 tests)
 pytest -q
 
 # 5. Launch the UI
@@ -87,7 +87,7 @@ scripts/
   train_email_classifier.py   Trains + saves models/email_classifier.joblib
   run_evaluation.py           Produces reports/evaluation_report.md
   measure_performance.py      Produces reports/performance_metrics.json
-tests/              pytest unit + integration tests (51 tests)
+tests/              pytest unit + integration tests (66 tests)
 data/raw/           Committed datasets (see Data sources)
 models/             Committed trained classifiers (.joblib)
 reports/            Generated metrics/evaluation artifacts (regenerable)
@@ -156,9 +156,14 @@ Strategies") and Chapter Six ("Conclusion"):
    plain-language generator (`TemplateBackend`) rather than a downloaded LLM,
    because this build environment blocks outbound access to Hugging Face. The
    backend interface (`phishguard/translation/backend.py`) is pluggable — an
-   `LlamaCppBackend` for a local quantized GGUF model is implemented and
-   unit-tested, and activates automatically if `PHISHGUARD_LLM_MODEL_PATH`
-   points to a real model file. No results here describe language-model output.
+   `LlamaCppBackend` for a local quantized GGUF model is implemented, and
+   activates automatically if `PHISHGUARD_LLM_MODEL_PATH` points to a real
+   model file. **It has never been run against real weights.** Its
+   availability gating, offline fallback and output post-processing are
+   covered by tests, and a separate integration test drives the real pipeline
+   through a non-template backend to evidence that the generator is genuinely
+   replaceable — but no result anywhere in this project describes the output
+   of a language model.
 2. **Faithfulness filter.** The translation layer only surfaces SHAP/LIME
    factors whose direction is semantically coherent with their actual value
    (`phishguard/translation/phrases.py::is_coherent`), so that a statistically

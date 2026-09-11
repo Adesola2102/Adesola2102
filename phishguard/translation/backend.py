@@ -23,12 +23,18 @@ one of the three candidate models (Phi-3-mini, Mistral-7B, Llama-3.2-3B) is
 available on disk - it shells out to ``llama-cpp-python`` if installed and a
 model path is configured. In the sandboxed environment this project was
 built in, outbound access to Hugging Face (the natural source of GGUF
-weights) is blocked by the environment's network policy, so this backend
-could not be exercised end-to-end here; see Chapter Four, "Challenges
-Encountered and Mitigation Strategies" for the full discussion. The class is
-still fully implemented and unit-testable (its prompt construction and
-output post-processing are covered by tests) so that swapping it in on a
-machine with model access requires no code changes - only setting
+weights) is blocked by the environment's network policy, so this backend has
+never been run against real weights; see Chapter Four, "Challenges
+Encountered and Mitigation Strategies" for the full discussion.
+
+What *is* covered by tests (``tests/test_llm_backend.py``) is everything the
+class does around the model: the availability gate, the fallback to
+``TemplateBackend`` when no local model is configured, and the
+post-processing that enforces the single-sentence requirement on generated
+output. The replaceability of the Generation Layer is covered separately by
+an integration test that drives the real pipeline through a non-template
+backend. None of that evidences the fluency of a real model's output - only
+that swapping one in requires no code change, just
 ``PHISHGUARD_LLM_MODEL_PATH``.
 """
 
