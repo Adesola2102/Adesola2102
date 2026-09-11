@@ -66,7 +66,8 @@ class LLMBackend(ABC):
 class TemplateBackend(LLMBackend):
     """Deterministic, offline, zero-dependency slot-filling generator.
 
-    This is the default backend used by the shipped prototype. It builds the
+    This is the default backend, and the one every reported result was
+    produced with. It builds the
     explanation directly from the structured ``context`` produced by
     ``PlainLanguageTranslator`` (verdict, confidence, ranked contributing
     factors from SHAP/LIME) rather than by parsing the free-text ``prompt``,
