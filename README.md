@@ -42,7 +42,7 @@ python scripts/run_evaluation.py
 #    -> reports/performance_metrics.json
 python scripts/measure_performance.py
 
-# 4. Run the tests (97 tests)
+# 4. Run the tests (99 tests)
 pytest -q
 
 # 5. Launch the UI
@@ -87,7 +87,7 @@ scripts/
   train_email_classifier.py   Trains + saves models/email_classifier.joblib
   run_evaluation.py           Produces reports/evaluation_report.md
   measure_performance.py      Produces reports/performance_metrics.json
-tests/              pytest unit + integration tests (97 tests)
+tests/              pytest unit + integration tests (99 tests)
 data/raw/           Committed datasets (see Data sources)
 models/             Committed trained classifiers (.joblib)
 reports/            Generated metrics/evaluation artifacts (regenerable)
