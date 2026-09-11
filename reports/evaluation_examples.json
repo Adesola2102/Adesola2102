@@ -5,9 +5,9 @@
       "input": "https://freberg.westnet.com/",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.8653093068694966,
+      "confidence": 0.8653093068694964,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.865, base_value=0.499, top_features=(num_subdomains: +0.147, path_length: -0.087, digit_ratio: -0.078, url_length: -0.075, num_digits: -0.063)",
-      "translated_sentence": "This web link looks LEGITIMATE with 87% confidence: it is not dominated by digits, uses a common, mainstream domain ending, and does not mix unusual digits into the web address.",
+      "translated_sentence": "This web link looks LEGITIMATE with 87% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 11.09523809523813,
         "flesch_kincaid_grade": 12.291428571428572,
@@ -91,7 +91,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9983933339122459,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.998, base_value=0.499, top_features=(num_dots: -0.088, num_subdomains: -0.065, domain_entropy: -0.062, digit_ratio: -0.061, url_length: -0.058)",
-      "translated_sentence": "This web link looks LEGITIMATE with 100% confidence: it has a simple, normal domain structure, is not dominated by digits, and does not mix unusual digits into the web address.",
+      "translated_sentence": "This web link looks LEGITIMATE with 100% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.",
       "raw": {
         "flesch_reading_ease": -0.9904761904761585,
         "flesch_kincaid_grade": 13.977142857142859,
@@ -99,9 +99,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 38.20500000000004,
-        "flesch_kincaid_grade": 15.383333333333336,
-        "word_count": 30,
+        "flesch_reading_ease": 38.43000000000001,
+        "flesch_kincaid_grade": 14.60666666666667,
+        "word_count": 27,
         "sentence_count": 1
       }
     },
@@ -175,7 +175,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.959056008132705,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.959, base_value=0.499, top_features=(num_subdomains: -0.126, num_dots: -0.077, path_length: +0.063, digit_ratio: -0.062, num_digits: -0.052)",
-      "translated_sentence": "This web link looks LEGITIMATE with 96% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.",
+      "translated_sentence": "This web link looks LEGITIMATE with 96% confidence: it has a simple, normal domain structure, uses a common, mainstream domain ending, and is not dominated by digits.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -196,7 +196,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.6681949738191293,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.668, base_value=0.499, top_features=(num_subdomains: +0.174, domain_length: -0.083, domain_entropy: -0.081, digit_ratio: -0.053, num_digits: -0.043)",
-      "translated_sentence": "This web link looks LEGITIMATE with 67% confidence: it is not dominated by digits, does not mix unusual digits into the web address, and uses a common, mainstream domain ending.",
+      "translated_sentence": "This web link looks LEGITIMATE with 67% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": -7.033333333333331,
         "flesch_kincaid_grade": 14.82,
@@ -215,9 +215,9 @@
       "input": "https://e.webring.com/hub",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.7306360821352257,
+      "confidence": 0.7306360821352258,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.731, base_value=0.499, top_features=(num_subdomains: +0.153, digit_ratio: -0.065, url_length: -0.060, domain_length: -0.057, num_digits: -0.055)",
-      "translated_sentence": "This web link looks LEGITIMATE with 73% confidence: it is not dominated by digits, has no unusual hyphens in the domain, and uses a common, mainstream domain ending.",
+      "translated_sentence": "This web link looks LEGITIMATE with 73% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -225,9 +225,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 36.40785714285718,
-        "flesch_kincaid_grade": 15.137142857142859,
-        "word_count": 28,
+        "flesch_reading_ease": 35.38500000000002,
+        "flesch_kincaid_grade": 15.776666666666667,
+        "word_count": 30,
         "sentence_count": 1
       }
     },
@@ -238,7 +238,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9376684491795474,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.938, base_value=0.499, top_features=(num_subdomains: -0.147, num_dots: -0.080, digit_ratio: -0.078, path_length: +0.064, num_digits: -0.060)",
-      "translated_sentence": "This web link looks LEGITIMATE with 94% confidence: it has a simple, normal domain structure, is not dominated by digits, and does not contain any hidden-destination tricks such as an '@' symbol.",
+      "translated_sentence": "This web link looks LEGITIMATE with 94% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -246,9 +246,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 33.46032258064517,
-        "flesch_kincaid_grade": 16.293548387096777,
-        "word_count": 31,
+        "flesch_reading_ease": 38.43000000000001,
+        "flesch_kincaid_grade": 14.60666666666667,
+        "word_count": 27,
         "sentence_count": 1
       }
     },
@@ -280,7 +280,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.5814747503817558,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.581, base_value=0.499, top_features=(num_dots: +0.354, url_length: -0.074, path_length: -0.068, digit_ratio: -0.065, num_digits: -0.051)",
-      "translated_sentence": "This web link looks LEGITIMATE with 58% confidence: it uses a common, mainstream domain ending, has a simple, normal domain structure, and does not mix unusual digits into the web address.",
+      "translated_sentence": "This web link looks LEGITIMATE with 58% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 23.18095238095239,
         "flesch_kincaid_grade": 10.605714285714289,
@@ -288,9 +288,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 36.189354838709676,
-        "flesch_kincaid_grade": 15.912903225806453,
-        "word_count": 31,
+        "flesch_reading_ease": 35.38500000000002,
+        "flesch_kincaid_grade": 15.776666666666667,
+        "word_count": 30,
         "sentence_count": 1
       }
     },
@@ -322,7 +322,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9967222222222222,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.997, base_value=0.499, top_features=(digit_ratio: +0.097, num_digits: +0.095, url_length: +0.091, domain_entropy: +0.073, num_subdomains: +0.067)",
-      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it has an unusually long web address (194 characters), is made up largely of digits, and mixes unusual digits into the web address.",
+      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it has an unusually long web address (194 characters), mixes unusual digits into the web address, and is made up largely of digits.",
       "raw": {
         "flesch_reading_ease": 11.09523809523813,
         "flesch_kincaid_grade": 12.291428571428572,
@@ -343,7 +343,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9899603174603174,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.990, base_value=0.499, top_features=(suspicious_tld: +0.087, domain_entropy: +0.083, num_subdomains: +0.069, url_length: +0.066, domain_length: +0.062)",
-      "translated_sentence": "This web link was flagged as PHISHING with 99% confidence because it uses an unusual, high-risk domain ending, has a domain name that looks randomly generated, and has an unusually long web address (83 characters).",
+      "translated_sentence": "This web link was flagged as PHISHING with 99% confidence because it uses an unusual, high-risk domain ending, has an unusually long web address (83 characters), and has a domain name that looks randomly generated.",
       "raw": {
         "flesch_reading_ease": 11.09523809523813,
         "flesch_kincaid_grade": 12.291428571428572,
@@ -385,7 +385,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9646336675020886,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.965, base_value=0.499, top_features=(num_dots: +0.149, url_length: +0.118, num_digits: +0.084, digit_ratio: +0.081, query_length: +0.041)",
-      "translated_sentence": "This web link was flagged as PHISHING with 96% confidence because it has an unusually complex domain name with 1 dots, has an unusually long web address (296 characters), and is made up largely of digits.",
+      "translated_sentence": "This web link was flagged as PHISHING with 96% confidence because it has an unusually long web address (296 characters), has an unusually complex domain name with 1 dots, and mixes unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 35.26666666666668,
         "flesch_kincaid_grade": 8.920000000000002,
@@ -393,9 +393,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 41.045000000000044,
-        "flesch_kincaid_grade": 16.477777777777778,
-        "word_count": 36,
+        "flesch_reading_ease": 29.80432432432434,
+        "flesch_kincaid_grade": 18.294054054054055,
+        "word_count": 37,
         "sentence_count": 1
       }
     },
@@ -425,9 +425,9 @@
       "input": "https://uwbetaalgegevens.com/knab",
       "true_label": "phishing",
       "predicted_label": "phishing",
-      "confidence": 0.9220891530844938,
+      "confidence": 0.9220891530844936,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.922, base_value=0.499, top_features=(num_dots: +0.462, path_length: +0.051, digit_ratio: -0.048, num_digits: -0.038, num_subdomains: -0.034)",
-      "translated_sentence": "This web link was flagged as PHISHING with 92% confidence because it has an unusually complex domain name with 1 dots, has a domain name that looks randomly generated, and has an unusually complex folder structure in its link.",
+      "translated_sentence": "This web link was flagged as PHISHING with 92% confidence because it has an unusually complex domain name with 1 dots, has an unusually long web-address path, and has an unusually complex folder structure in its link.",
       "raw": {
         "flesch_reading_ease": 17.138095238095246,
         "flesch_kincaid_grade": 11.44857142857143,
@@ -435,9 +435,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 32.75769230769234,
-        "flesch_kincaid_grade": 18.378974358974364,
-        "word_count": 39,
+        "flesch_reading_ease": 32.09081081081081,
+        "flesch_kincaid_grade": 17.975135135135137,
+        "word_count": 37,
         "sentence_count": 1
       }
     },
@@ -448,7 +448,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9863949938949939,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.986, base_value=0.499, top_features=(domain_entropy: +0.104, domain_length: +0.092, num_digits: +0.090, digit_ratio: +0.090, num_subdomains: +0.087)",
-      "translated_sentence": "This web link was flagged as PHISHING with 99% confidence because it has a domain name that looks randomly generated, has an unusually long web address (69 characters), and is made up largely of digits.",
+      "translated_sentence": "This web link was flagged as PHISHING with 99% confidence because it has an unusually long web address (69 characters), mixes unusual digits into the web address, and has a domain name that looks randomly generated.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -456,9 +456,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 40.784285714285716,
-        "flesch_kincaid_grade": 16.265714285714285,
-        "word_count": 35,
+        "flesch_reading_ease": 29.295000000000016,
+        "flesch_kincaid_grade": 18.11666666666667,
+        "word_count": 36,
         "sentence_count": 1
       }
     },
@@ -551,9 +551,9 @@
       "input": "http://travelme.lk/public/dd6ubbqm0t7mu5fz9egjkoymazcqyh2k",
       "true_label": "phishing",
       "predicted_label": "phishing",
-      "confidence": 0.8810658879904164,
+      "confidence": 0.8810658879904165,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.881, base_value=0.499, top_features=(num_dots: +0.339, digit_ratio: +0.092, num_digits: +0.062, domain_entropy: -0.037, domain_length: -0.037)",
-      "translated_sentence": "This web link was flagged as PHISHING with 88% confidence because it has an unusually complex domain name with 1 dots, mixes unusual digits into the web address, and is made up largely of digits.",
+      "translated_sentence": "This web link was flagged as PHISHING with 88% confidence because it has an unusually complex domain name with 1 dots, is made up largely of digits, and mixes unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 17.138095238095246,
         "flesch_kincaid_grade": 11.44857142857143,
@@ -574,7 +574,7 @@
       "predicted_label": "phishing",
       "confidence": 0.625907188328241,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.626, base_value=0.499, top_features=(digit_ratio: +0.180, num_digits: +0.101, domain_entropy: +0.087, num_dots: -0.075, num_subdomains: -0.074)",
-      "translated_sentence": "This web link was flagged as PHISHING with 63% confidence because it is made up largely of digits, has a domain name that looks randomly generated, and mixes unusual digits into the web address.",
+      "translated_sentence": "This web link was flagged as PHISHING with 63% confidence because it is made up largely of digits, mixes unusual digits into the web address, and has a domain name that looks randomly generated.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -595,7 +595,7 @@
       "predicted_label": "phishing",
       "confidence": 1.0,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=1.000, base_value=0.499, top_features=(digit_ratio: +0.080, url_length: +0.079, num_digits: +0.077, domain_entropy: +0.071, num_subdomains: +0.071)",
-      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it has an unusually long web address (103 characters), is made up largely of digits, and mixes unusual digits into the web address.",
+      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it has an unusually long web address (103 characters), mixes unusual digits into the web address, and is made up largely of digits.",
       "raw": {
         "flesch_reading_ease": 11.09523809523813,
         "flesch_kincaid_grade": 12.291428571428572,
@@ -616,7 +616,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9998245614035087,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=1.000, base_value=0.499, top_features=(domain_entropy: +0.091, digit_ratio: +0.085, num_subdomains: +0.085, domain_length: +0.082, num_digits: +0.078)",
-      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it has a domain name that looks randomly generated, contains 1 nested sub-domain(s), a common cloaking trick, and mixes unusual digits into the web address.",
+      "translated_sentence": "This web link was flagged as PHISHING with 100% confidence because it contains 1 nested sub-domain(s), a common cloaking trick, is made up largely of digits, and mixes unusual digits into the web address.",
       "raw": {
         "flesch_reading_ease": 5.0523809523809575,
         "flesch_kincaid_grade": 13.134285714285717,
@@ -624,9 +624,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 31.64500000000004,
-        "flesch_kincaid_grade": 17.788888888888888,
-        "word_count": 36,
+        "flesch_reading_ease": 40.448529411764724,
+        "flesch_kincaid_grade": 16.064117647058826,
+        "word_count": 34,
         "sentence_count": 1
       }
     }
@@ -637,7 +637,7 @@
       "input": "re :",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.8852498302022028,
+      "confidence": 0.8852498302022027,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.885, base_value=0.500, top_features=(all_caps_word_ratio: -0.309, financial_keyword_count: +0.098, urgent_keyword_count: -0.060, non_alpha_ratio: -0.049, link_to_word_ratio: -0.021)",
       "translated_sentence": "This email looks LEGITIMATE with 89% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
@@ -660,7 +660,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9623417605734642,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.962, base_value=0.500, top_features=(all_caps_word_ratio: -0.263, non_alpha_ratio: -0.077, credential_keyword_count: +0.077, urgent_keyword_count: -0.070, word_count: -0.036)",
-      "translated_sentence": "This email looks LEGITIMATE with 96% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 96% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -49.333333333333314,
         "flesch_kincaid_grade": 20.720000000000002,
@@ -702,7 +702,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9719008705114466,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.972, base_value=0.500, top_features=(all_caps_word_ratio: -0.306, urgent_keyword_count: +0.113, non_alpha_ratio: -0.085, attachment_keyword: -0.068, num_urls_in_body: -0.025)",
-      "translated_sentence": "This email looks LEGITIMATE with 97% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and is not unusually link-heavy.",
+      "translated_sentence": "This email looks LEGITIMATE with 97% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and contains few or no embedded links.",
       "raw": {
         "flesch_reading_ease": -55.37619047619049,
         "flesch_kincaid_grade": 21.562857142857144,
@@ -710,9 +710,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 17.0861290322581,
-        "flesch_kincaid_grade": 18.577419354838714,
-        "word_count": 31,
+        "flesch_reading_ease": 22.085454545454553,
+        "flesch_kincaid_grade": 18.3769696969697,
+        "word_count": 33,
         "sentence_count": 1
       }
     },
@@ -721,9 +721,9 @@
       "input": "f . o . m . nomination eff . june 1 , 2000",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.9944417735304253,
+      "confidence": 0.9944417735304254,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.994, base_value=0.500, top_features=(all_caps_word_ratio: -0.257, urgent_keyword_count: -0.079, non_alpha_ratio: -0.051, financial_keyword_count: -0.028, num_urls_in_body: -0.021)",
-      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -55.37619047619049,
         "flesch_kincaid_grade": 21.562857142857144,
@@ -744,7 +744,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9931408587433546,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.993, base_value=0.500, top_features=(all_caps_word_ratio: -0.254, urgent_keyword_count: -0.082, non_alpha_ratio: -0.043, financial_keyword_count: -0.029, num_urls_in_body: -0.021)",
-      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -55.37619047619049,
         "flesch_kincaid_grade": 21.562857142857144,
@@ -765,7 +765,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.8946856899362077,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.895, base_value=0.500, top_features=(all_caps_word_ratio: -0.260, urgent_keyword_count: -0.084, financial_keyword_count: -0.048, exclamation_count: +0.041, word_count: +0.025)",
-      "translated_sentence": "This email looks LEGITIMATE with 89% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and contains few or no embedded links.",
+      "translated_sentence": "This email looks LEGITIMATE with 89% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -61.419047619047575,
         "flesch_kincaid_grade": 22.405714285714286,
@@ -773,9 +773,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 38.20500000000004,
-        "flesch_kincaid_grade": 15.383333333333336,
-        "word_count": 30,
+        "flesch_reading_ease": 20.542647058823547,
+        "flesch_kincaid_grade": 18.840588235294117,
+        "word_count": 34,
         "sentence_count": 1
       }
     },
@@ -786,7 +786,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9889760195912942,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.989, base_value=0.500, top_features=(all_caps_word_ratio: -0.260, urgent_keyword_count: -0.074, non_alpha_ratio: -0.033, financial_keyword_count: -0.028, num_urls_in_body: -0.021)",
-      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 99% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -55.37619047619049,
         "flesch_kincaid_grade": 21.562857142857144,
@@ -807,7 +807,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.8615095854163756,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.862, base_value=0.500, top_features=(all_caps_word_ratio: -0.309, urgent_keyword_count: +0.196, word_count: -0.170, num_urls_in_body: -0.023, link_to_word_ratio: -0.021)",
-      "translated_sentence": "This email looks LEGITIMATE with 86% confidence: it does not rely on capital letters for emphasis, has a normal amount of message content, and is not unusually link-heavy.",
+      "translated_sentence": "This email looks LEGITIMATE with 86% confidence: it does not rely on capital letters for emphasis, has a normal amount of message content, and addresses the recipient normally rather than with a generic greeting.",
       "raw": {
         "flesch_reading_ease": -43.29047619047617,
         "flesch_kincaid_grade": 19.87714285714286,
@@ -815,9 +815,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 33.38642857142861,
-        "flesch_kincaid_grade": 15.55857142857143,
-        "word_count": 28,
+        "flesch_reading_ease": 20.542647058823547,
+        "flesch_kincaid_grade": 18.840588235294117,
+        "word_count": 34,
         "sentence_count": 1
       }
     },
@@ -828,7 +828,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9974691763037754,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.997, base_value=0.500, top_features=(all_caps_word_ratio: -0.249, urgent_keyword_count: -0.060, non_alpha_ratio: -0.038, attachment_keyword: -0.031, financial_keyword_count: -0.025)",
-      "translated_sentence": "This email looks LEGITIMATE with 100% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 100% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -67.46190476190478,
         "flesch_kincaid_grade": 23.248571428571427,
@@ -891,7 +891,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.9534277999725667,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.953, base_value=0.500, top_features=(all_caps_word_ratio: -0.279, financial_keyword_count: +0.077, urgent_keyword_count: -0.070, attachment_keyword: -0.058, non_alpha_ratio: -0.053)",
-      "translated_sentence": "This email looks LEGITIMATE with 95% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and contains few or no embedded links.",
+      "translated_sentence": "This email looks LEGITIMATE with 95% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -67.46190476190478,
         "flesch_kincaid_grade": 23.248571428571427,
@@ -899,9 +899,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 38.20500000000004,
-        "flesch_kincaid_grade": 15.383333333333336,
-        "word_count": 30,
+        "flesch_reading_ease": 20.542647058823547,
+        "flesch_kincaid_grade": 18.840588235294117,
+        "word_count": 34,
         "sentence_count": 1
       }
     },
@@ -910,9 +910,9 @@
       "input": "the ews tax update for august 3 , 2001",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.8449603203809871,
+      "confidence": 0.844960320380987,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.845, base_value=0.500, top_features=(all_caps_word_ratio: -0.277, financial_keyword_count: +0.117, attachment_keyword: -0.092, urgent_keyword_count: -0.085, non_alpha_ratio: +0.070)",
-      "translated_sentence": "This email looks LEGITIMATE with 84% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 84% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -67.46190476190478,
         "flesch_kincaid_grade": 23.248571428571427,
@@ -931,9 +931,9 @@
       "input": "approval process for entouch",
       "true_label": "legitimate",
       "predicted_label": "legitimate",
-      "confidence": 0.9532190739256614,
+      "confidence": 0.9532190739256615,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.953, base_value=0.500, top_features=(all_caps_word_ratio: -0.269, urgent_keyword_count: -0.068, non_alpha_ratio: +0.045, attachment_keyword: -0.044, financial_keyword_count: -0.031)",
-      "translated_sentence": "This email looks LEGITIMATE with 95% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 95% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -67.46190476190478,
         "flesch_kincaid_grade": 23.248571428571427,
@@ -954,7 +954,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9958143728505894,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.996, base_value=0.500, top_features=(all_caps_word_ratio: +0.329, urgent_keyword_count: +0.145, non_alpha_ratio: +0.031, word_count: +0.011, attachment_keyword: +0.009)",
-      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses urgent, pressuring language, and contains an unusual number of symbols or special characters.",
+      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses urgent, pressuring language, and references bank, payment or other financial details.",
       "raw": {
         "flesch_reading_ease": -37.247619047619025,
         "flesch_kincaid_grade": 19.03428571428572,
@@ -962,9 +962,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 18.37375000000003,
-        "flesch_kincaid_grade": 18.64625,
-        "word_count": 32,
+        "flesch_reading_ease": 18.465000000000032,
+        "flesch_kincaid_grade": 18.136666666666667,
+        "word_count": 30,
         "sentence_count": 1
       }
     },
@@ -975,7 +975,7 @@
       "predicted_label": "phishing",
       "confidence": 1.0,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=1.000, base_value=0.500, top_features=(all_caps_word_ratio: +0.203, urgent_keyword_count: +0.078, num_urls_in_body: +0.075, link_to_word_ratio: +0.061, avg_embedded_url_length: +0.057)",
-      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, contains 1 embedded link(s), and uses urgent, pressuring language.",
+      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses urgent, pressuring language, and is unusually link-heavy relative to its length.",
       "raw": {
         "flesch_reading_ease": -37.247619047619025,
         "flesch_kincaid_grade": 19.03428571428572,
@@ -983,9 +983,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 29.03000000000003,
-        "flesch_kincaid_grade": 15.91777777777778,
-        "word_count": 27,
+        "flesch_reading_ease": 24.105000000000018,
+        "flesch_kincaid_grade": 17.350000000000005,
+        "word_count": 30,
         "sentence_count": 1
       }
     },
@@ -996,7 +996,7 @@
       "predicted_label": "legitimate",
       "confidence": 0.6690724660645603,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.669, base_value=0.500, top_features=(all_caps_word_ratio: -0.243, non_alpha_ratio: +0.147, urgent_keyword_count: -0.063, word_count: +0.047, attachment_keyword: +0.022)",
-      "translated_sentence": "This email looks LEGITIMATE with 67% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
+      "translated_sentence": "This email looks LEGITIMATE with 67% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.",
       "raw": {
         "flesch_reading_ease": -49.333333333333314,
         "flesch_kincaid_grade": 20.720000000000002,
@@ -1015,7 +1015,7 @@
       "input": "Account Policy and Important Account Notification from monkey.org ",
       "true_label": "phishing",
       "predicted_label": "legitimate",
-      "confidence": 0.7617585707176951,
+      "confidence": 0.7617585707176953,
       "raw_shap_text": "[SHAP] predicted_class=legitimate, confidence=0.762, base_value=0.500, top_features=(all_caps_word_ratio: -0.246, non_alpha_ratio: +0.111, urgent_keyword_count: -0.101, word_count: +0.041, financial_keyword_count: -0.020)",
       "translated_sentence": "This email looks LEGITIMATE with 76% confidence: it does not rely on capital letters for emphasis, does not use urgent or pressuring language, and addresses the recipient normally rather than with a generic greeting.",
       "raw": {
@@ -1080,7 +1080,7 @@
       "predicted_label": "phishing",
       "confidence": 1.0,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=1.000, base_value=0.500, top_features=(all_caps_word_ratio: +0.247, num_urls_in_body: +0.095, link_to_word_ratio: +0.083, avg_embedded_url_length: +0.076, financial_keyword_count: +0.032)",
-      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, contains 1 embedded link(s), and contains unusually long links.",
+      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, is unusually link-heavy relative to its length, and contains unusually long links.",
       "raw": {
         "flesch_reading_ease": -37.247619047619025,
         "flesch_kincaid_grade": 19.03428571428572,
@@ -1088,9 +1088,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 29.03000000000003,
-        "flesch_kincaid_grade": 15.91777777777778,
-        "word_count": 27,
+        "flesch_reading_ease": 24.105000000000018,
+        "flesch_kincaid_grade": 17.350000000000005,
+        "word_count": 30,
         "sentence_count": 1
       }
     },
@@ -1143,7 +1143,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9840733043288388,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.984, base_value=0.500, top_features=(all_caps_word_ratio: +0.448, financial_keyword_count: +0.074, urgent_keyword_count: -0.040, non_alpha_ratio: +0.025, attachment_keyword: +0.008)",
-      "translated_sentence": "This email was flagged as PHISHING with 98% confidence because it uses excessive capital letters to create alarm, contains an unusual number of symbols or special characters, and references bank, payment or other financial details.",
+      "translated_sentence": "This email was flagged as PHISHING with 98% confidence because it uses excessive capital letters to create alarm and references bank, payment or other financial details.",
       "raw": {
         "flesch_reading_ease": -55.37619047619049,
         "flesch_kincaid_grade": 21.562857142857144,
@@ -1151,9 +1151,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 14.195714285714303,
-        "flesch_kincaid_grade": 19.974285714285717,
-        "word_count": 35,
+        "flesch_reading_ease": 27.514230769230807,
+        "flesch_kincaid_grade": 15.880769230769232,
+        "word_count": 26,
         "sentence_count": 1
       }
     },
@@ -1183,7 +1183,7 @@
       "input": "Fund For Investment",
       "true_label": "phishing",
       "predicted_label": "phishing",
-      "confidence": 0.5079324789532846,
+      "confidence": 0.5079324789532845,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.508, base_value=0.500, top_features=(all_caps_word_ratio: -0.234, non_alpha_ratio: +0.212, word_count: +0.128, urgent_keyword_count: -0.056, attachment_keyword: +0.028)",
       "translated_sentence": "This email was flagged as PHISHING with 51% confidence because it contains an unusual number of symbols or special characters.",
       "raw": {
@@ -1206,7 +1206,7 @@
       "predicted_label": "phishing",
       "confidence": 0.9979133361065544,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.998, base_value=0.500, top_features=(all_caps_word_ratio: +0.365, urgent_keyword_count: +0.094, non_alpha_ratio: +0.053, attachment_keyword: +0.010, word_count: +0.008)",
-      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, contains an unusual number of symbols or special characters, and references bank, payment or other financial details.",
+      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses urgent, pressuring language, and contains an unusual number of symbols or special characters.",
       "raw": {
         "flesch_reading_ease": -37.247619047619025,
         "flesch_kincaid_grade": 19.03428571428572,
@@ -1214,9 +1214,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 14.195714285714303,
-        "flesch_kincaid_grade": 19.974285714285717,
-        "word_count": 35,
+        "flesch_reading_ease": 18.37375000000003,
+        "flesch_kincaid_grade": 18.64625,
+        "word_count": 32,
         "sentence_count": 1
       }
     },
@@ -1227,7 +1227,7 @@
       "predicted_label": "phishing",
       "confidence": 1.0,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=1.000, base_value=0.500, top_features=(all_caps_word_ratio: +0.164, generic_greeting: +0.087, urgent_keyword_count: +0.066, num_urls_in_body: +0.061, link_to_word_ratio: +0.053)",
-      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses a generic greeting instead of your real name, and is unusually link-heavy relative to its length.",
+      "translated_sentence": "This email was flagged as PHISHING with 100% confidence because it uses excessive capital letters to create alarm, uses a generic greeting instead of your real name, and uses urgent, pressuring language.",
       "raw": {
         "flesch_reading_ease": -43.29047619047617,
         "flesch_kincaid_grade": 19.87714285714286,
@@ -1235,9 +1235,9 @@
         "sentence_count": 6
       },
       "translated": {
-        "flesch_reading_ease": 28.698571428571427,
-        "flesch_kincaid_grade": 17.951428571428576,
-        "word_count": 35,
+        "flesch_reading_ease": 28.948750000000018,
+        "flesch_kincaid_grade": 17.171250000000004,
+        "word_count": 32,
         "sentence_count": 1
       }
     },
@@ -1246,7 +1246,7 @@
       "input": "Unexpected sign-in attempt on jose@monkey.org",
       "true_label": "phishing",
       "predicted_label": "phishing",
-      "confidence": 0.8621712567185473,
+      "confidence": 0.8621712567185476,
       "raw_shap_text": "[SHAP] predicted_class=phishing, confidence=0.862, base_value=0.500, top_features=(urgent_keyword_count: +0.409, all_caps_word_ratio: -0.181, word_count: +0.121, credential_keyword_count: +0.065, non_alpha_ratio: -0.034)",
       "translated_sentence": "This email was flagged as PHISHING with 86% confidence because it uses urgent, pressuring language and asks for a password, login, or other sensitive credentials.",
       "raw": {

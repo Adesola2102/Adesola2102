@@ -61,13 +61,14 @@ class PhishingExplainer:
         classes = list(classifier.classes_())
         self._positive_idx = classes.index(POSITIVE_LABEL)
 
+        self._lime_seed = 42
         self._lime_explainer = LimeTabularExplainer(
             training_data=bg_transformed,
             feature_names=self.feature_names,
             class_names=classes,
             discretize_continuous=True,
             mode="classification",
-            random_state=42,
+            random_state=self._lime_seed,
         )
         self._lime_samples = lime_samples
 
@@ -112,6 +113,16 @@ class PhishingExplainer:
             return self.classifier.pipeline.named_steps["rf"].predict_proba(
                 np.asarray(data)
             )
+
+        # LimeTabularExplainer keeps its random_state as a *stateful*
+        # np.random.RandomState, which advances on every explain_instance call.
+        # Seeding it once at construction therefore only makes the first
+        # explanation of a process reproducible; later calls drift, so the same
+        # input can yield a different third-ranked factor. Reset it in place
+        # rather than rebinding the attribute: LimeBase captured a reference to
+        # the same object at construction and uses it for feature selection, so
+        # a fresh object here would leave that half still drifting.
+        self._lime_explainer.random_state.seed(self._lime_seed)
 
         lime_exp = self._lime_explainer.explain_instance(
             x_transformed,

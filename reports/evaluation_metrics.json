@@ -3,20 +3,20 @@
     "n": 30,
     "accuracy_on_sample": 1.0,
     "raw_flesch_reading_ease_avg": 8.678095238095255,
-    "translated_flesch_reading_ease_avg": 36.38093384691669,
+    "translated_flesch_reading_ease_avg": 36.00673891234034,
     "raw_flesch_kincaid_grade_avg": 12.628571428571432,
-    "translated_flesch_kincaid_grade_avg": 16.17601434916923,
+    "translated_flesch_kincaid_grade_avg": 16.161959584330784,
     "raw_word_count_avg": 14.0,
-    "translated_word_count_avg": 32.166666666666664
+    "translated_word_count_avg": 31.9
   },
   "email": {
     "n": 30,
     "accuracy_on_sample": 0.9333333333333333,
     "raw_flesch_reading_ease_avg": -51.34761904761903,
-    "translated_flesch_reading_ease_avg": 25.18821564561311,
+    "translated_flesch_reading_ease_avg": 24.01550960852875,
     "raw_flesch_kincaid_grade_avg": 21.00095238095239,
-    "translated_flesch_kincaid_grade_avg": 17.439060150296672,
+    "translated_flesch_kincaid_grade_avg": 17.644033726785196,
     "raw_word_count_avg": 14.0,
-    "translated_word_count_avg": 30.966666666666665
+    "translated_word_count_avg": 31.133333333333333
   }
 }
