@@ -3,8 +3,8 @@
 An explainable phishing detection system built for the MIT Professional
 Master's Project:
 
-> **An Explainable Translation Layer for Converting SHAP/LIME Outputs into
-> Human-Readable Phishing Alerts Using a Lightweight Open-Source LLM**
+> **Explainable URL/Email Phishing Detection System Using Random Forest and
+> SHAP-LIME Outputs for Generating Human-Readable Phishing Alerts**
 > Zulikhat Adesola Adeyanju (2025/A/MIT/0231), Department of Information
 > Technology, School of Computing, Miva Open University, Abuja.
 
