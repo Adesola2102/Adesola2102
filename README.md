@@ -42,7 +42,7 @@ python scripts/run_evaluation.py
 #    -> reports/performance_metrics.json
 python scripts/measure_performance.py
 
-# 4. Run the tests (66 tests)
+# 4. Run the tests (97 tests)
 pytest -q
 
 # 5. Launch the UI
@@ -87,7 +87,7 @@ scripts/
   train_email_classifier.py   Trains + saves models/email_classifier.joblib
   run_evaluation.py           Produces reports/evaluation_report.md
   measure_performance.py      Produces reports/performance_metrics.json
-tests/              pytest unit + integration tests (66 tests)
+tests/              pytest unit + integration tests (97 tests)
 data/raw/           Committed datasets (see Data sources)
 models/             Committed trained classifiers (.joblib)
 reports/            Generated metrics/evaluation artifacts (regenerable)
@@ -180,3 +180,8 @@ during development — the faithfulness failure, a malformed-URL crash, and an
 explanation-reproducibility defect in which LIME's stateful random generator
 advanced between calls. Each reproduces its bug and fails without the
 corresponding fix.
+
+The interface refuses structurally implausible input rather than classifying it:
+without that gate a bare word is rewritten to `http://<word>`, receives a full
+feature vector, and comes back with a confident verdict explained in terms of
+properties it does not have.
