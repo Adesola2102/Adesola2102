@@ -1,0 +1,52 @@
+{
+  "environment": {
+    "cpu_model": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "cpu_count_total": 4,
+    "cpus_available_to_process": 1,
+    "total_memory_gb": 15.7,
+    "platform": "Linux-6.18.44-fc-v24-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "thread_env": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "libraries": {
+      "sklearn": "1.9.0",
+      "shap": "0.51.0",
+      "lime": "0.2.0.1",
+      "pandas": "3.0.3",
+      "numpy": "2.4.6",
+      "joblib": "1.5.3"
+    }
+  },
+  "models": {
+    "files": {
+      "email_classifier.joblib": 6892735,
+      "url_classifier.joblib": 5871103
+    },
+    "total_bytes": 12763838,
+    "total_mb": 12.2
+  },
+  "startup": {
+    "cache_dropped": true,
+    "cold_load_s": 1.8707,
+    "warm_load_s": 1.3767
+  },
+  "analysis": {
+    "url_analysis": {
+      "runs": 15,
+      "mean_s": 0.1106,
+      "median_s": 0.1106,
+      "min_s": 0.1037,
+      "max_s": 0.1192
+    },
+    "email_analysis": {
+      "runs": 15,
+      "mean_s": 0.1118,
+      "median_s": 0.1118,
+      "min_s": 0.1064,
+      "max_s": 0.1192
+    }
+  }
+}
