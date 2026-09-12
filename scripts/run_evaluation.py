@@ -171,7 +171,10 @@ def render_markdown_report(url_rows: list, email_rows: list, url_summary: dict,
 
 
 def main() -> None:
-    pipeline = PhishingExplanationPipeline(background_size=150, lime_samples=300)
+    # Use the pipeline defaults (200 background rows, 400 LIME samples) so the
+    # figures reported in Chapter Five describe the configuration the shipped
+    # interface actually runs, rather than a lighter evaluation-only setting.
+    pipeline = PhishingExplanationPipeline()
 
     print(f"Evaluating {N_SAMPLES_PER_CLASS * 2} URLs and {N_SAMPLES_PER_CLASS * 2} emails...")
     url_rows = evaluate_urls(pipeline)

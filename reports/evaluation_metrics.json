@@ -1,22 +1,22 @@
 {
   "url": {
     "n": 30,
-    "accuracy_on_sample": 0.8666666666666667,
-    "raw_flesch_reading_ease_avg": 13.915238095238108,
-    "translated_flesch_reading_ease_avg": 34.59578767236772,
-    "raw_flesch_kincaid_grade_avg": 11.89809523809524,
-    "translated_flesch_kincaid_grade_avg": 16.822491002356916,
+    "accuracy_on_sample": 1.0,
+    "raw_flesch_reading_ease_avg": 8.678095238095255,
+    "translated_flesch_reading_ease_avg": 36.00673891234034,
+    "raw_flesch_kincaid_grade_avg": 12.628571428571432,
+    "translated_flesch_kincaid_grade_avg": 16.161959584330784,
     "raw_word_count_avg": 14.0,
-    "translated_word_count_avg": 33.766666666666666
+    "translated_word_count_avg": 31.9
   },
   "email": {
     "n": 30,
-    "accuracy_on_sample": 0.8,
-    "raw_flesch_reading_ease_avg": -38.85904761904761,
-    "translated_flesch_reading_ease_avg": 37.25611701137807,
-    "raw_flesch_kincaid_grade_avg": 19.25904761904762,
-    "translated_flesch_kincaid_grade_avg": 14.728995105583987,
+    "accuracy_on_sample": 0.9333333333333333,
+    "raw_flesch_reading_ease_avg": -51.34761904761903,
+    "translated_flesch_reading_ease_avg": 24.01550960852875,
+    "raw_flesch_kincaid_grade_avg": 21.00095238095239,
+    "translated_flesch_kincaid_grade_avg": 17.644033726785196,
     "raw_word_count_avg": 14.0,
-    "translated_word_count_avg": 26.833333333333332
+    "translated_word_count_avg": 31.133333333333333
   }
 }

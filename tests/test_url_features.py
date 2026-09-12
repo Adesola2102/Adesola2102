@@ -1,3 +1,5 @@
+import pytest
+
 from phishguard.data.url_features import FEATURE_NAMES, extract_url_features
 
 
@@ -72,3 +74,28 @@ def test_brand_keyword_in_registrable_domain_not_flagged():
 def test_url_without_scheme_is_handled():
     feats = extract_url_features("www.example.com")
     assert feats["domain_length"] > 0
+
+
+def test_malformed_bracketed_url_does_not_crash_the_extractor():
+    """Regression test for the defect in Section 4.4.5.
+
+    urlsplit() rejects an unbalanced square bracket as a malformed IPv6
+    literal. The extractor is a total function by design (Section 4.2.2), so
+    it must absorb that rather than propagate the exception: string-level
+    features still describe the input, and host-derived features fall back to
+    their empty defaults.
+    """
+    from urllib.parse import urlsplit
+
+    malformed = "http://[unbalanced.example.com/login"
+    with pytest.raises(ValueError):
+        urlsplit(malformed)  # the condition this test exists for
+
+    feats = extract_url_features(malformed)
+    assert set(feats.keys()) == set(FEATURE_NAMES)
+    assert all(isinstance(v, (int, float)) for v in feats.values())
+    # String-level features still apply...
+    assert feats["url_length"] == float(len(malformed))
+    # ...while host-structure features take their absent defaults.
+    assert feats["domain_length"] == 0.0
+    assert feats["has_ip_address"] == 0.0
