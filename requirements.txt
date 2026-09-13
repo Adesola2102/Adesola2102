@@ -7,7 +7,10 @@ joblib==1.5.3
 
 # XAI (Chapter Three, Component 3)
 shap==0.51.0
-lime==0.2.0.1
+# Installed from a pre-built wheel (see vendor/) because lime's PyPI sdist
+# has no wheel and its legacy setup.py fails to build on Debian/Ubuntu
+# Python (setuptools/distutils "install_layout" AttributeError).
+./vendor/lime-0.2.0.1-py3-none-any.whl
 
 # User Interface (Chapter Three, Component 5)
 streamlit==1.60.0

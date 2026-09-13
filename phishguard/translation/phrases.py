@@ -37,6 +37,18 @@ def _n(value: float) -> int:
     return int(round(value))
 
 
+def _count(value: float, singular: str, plural: str | None = None) -> str:
+    """Render a count with a correctly agreeing noun.
+
+    The sentences these phrases build are the project's output, and their
+    readability is what Chapter Five measures, so "1 dots" and the evasive
+    "1 dot(s)" are both defects rather than cosmetic details.
+    """
+
+    n = _n(value)
+    return f"{n} {singular if n == 1 else (plural or singular + 's')}"
+
+
 def _pair(present: PhraseFn, absent: PhraseFn) -> Dict[str, PhraseFn]:
     return {"present": present, "absent": absent}
 
@@ -48,23 +60,23 @@ FEATURE_PHRASES: Dict[str, Dict[str, PhraseFn]] = {
         lambda v: "uses a common, mainstream domain ending",
     ),
     "num_subdomains": _pair(
-        lambda v: f"contains {_n(v)} nested sub-domain(s), a common cloaking trick",
+        lambda v: f"contains {_count(v, 'nested sub-domain')}, a common cloaking trick",
         lambda v: "has a simple, normal domain structure",
     ),
     "url_length": _pair(
-        lambda v: f"has an unusually long web address ({_n(v)} characters)",
+        lambda v: f"has an unusually long web address ({_count(v, 'character')})",
         lambda v: "has a normal-length web address",
     ),
     "domain_length": _pair(
-        lambda v: f"has an unusually long domain name ({_n(v)} characters)",
+        lambda v: f"has an unusually long domain name ({_count(v, 'character')})",
         lambda v: "has a normal-length domain name",
     ),
     "num_dots": _pair(
-        lambda v: f"has an unusually complex domain name with {_n(v)} dots",
+        lambda v: f"has an unusually complex domain name with {_count(v, 'dot')}",
         lambda v: "has a simple domain name",
     ),
     "num_hyphens": _pair(
-        lambda v: f"contains {_n(v)} hyphen(s) in the domain, often used to imitate a real brand",
+        lambda v: f"contains {_count(v, 'hyphen')} in the domain, often used to imitate a real brand",
         lambda v: "has no unusual hyphens in the domain",
     ),
     "num_digits": _pair(
@@ -177,7 +189,7 @@ FEATURE_PHRASES: Dict[str, Dict[str, PhraseFn]] = {
         lambda v: "does not reference any attachment",
     ),
     "num_urls_in_body": _pair(
-        lambda v: f"contains {_n(v)} embedded link(s)",
+        lambda v: f"contains {_count(v, 'embedded link')}",
         lambda v: "contains few or no embedded links",
     ),
     "link_to_word_ratio": _pair(

@@ -1,42 +1,42 @@
 {
-  "accuracy": 0.8791666666666667,
-  "precision": 0.922077922077922,
-  "recall": 0.8283333333333334,
-  "f1": 0.8726953467954346,
+  "accuracy": 0.9223057644110275,
+  "precision": 0.9121951219512195,
+  "recall": 0.935,
+  "f1": 0.9234567901234568,
   "confusion_matrix": [
     [
-      1116,
-      84
+      181,
+      18
     ],
     [
-      206,
-      994
+      13,
+      187
     ]
   ],
   "confusion_matrix_labels": [
     "legitimate",
     "phishing"
   ],
-  "n_train": 9600,
-  "n_test": 2400,
+  "n_train": 1596,
+  "n_test": 399,
   "feature_importances": {
-    "num_subdomains": 0.24421954246772612,
-    "url_length": 0.15740678515638465,
-    "num_dots": 0.15612573424382767,
-    "domain_entropy": 0.1364440329279121,
-    "domain_length": 0.12491932107276553,
-    "num_digits": 0.04807268509456115,
-    "suspicious_tld": 0.04427000667446997,
-    "num_hyphens": 0.04219059332069503,
-    "digit_ratio": 0.03874319558904266,
-    "has_https": 0.004164340374187212,
-    "brand_keyword_in_subdomain": 0.0020365472286684675,
-    "has_ip_address": 0.0011833830347889136,
-    "num_path_segments": 0.00010497065068719779,
-    "path_length": 0.00010347548994621016,
-    "is_shortener": 1.538667433717052e-05,
-    "has_at_symbol": 0.0,
-    "num_special_chars": 0.0,
-    "query_length": 0.0
+    "num_dots": 0.14956135190536426,
+    "url_length": 0.1140962477319031,
+    "domain_entropy": 0.11383835267366738,
+    "digit_ratio": 0.1128147187603843,
+    "num_subdomains": 0.1085565284076639,
+    "domain_length": 0.09375399120181144,
+    "num_digits": 0.09291309250130687,
+    "path_length": 0.07984857863799714,
+    "num_hyphens": 0.04643595111778215,
+    "suspicious_tld": 0.03477063261876049,
+    "num_path_segments": 0.029142499190536957,
+    "query_length": 0.01010839609454759,
+    "has_https": 0.008108266756910587,
+    "num_special_chars": 0.003885452752979988,
+    "brand_keyword_in_subdomain": 0.0010385884962214355,
+    "has_ip_address": 0.0008770633187771664,
+    "has_at_symbol": 0.00014842329272615404,
+    "is_shortener": 0.00010186454065902626
   }
 }

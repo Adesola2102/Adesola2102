@@ -89,3 +89,24 @@ def test_header_mismatch_detected_when_supplied():
         )
     )
     assert feats["sender_domain_mismatch"] == 1.0
+
+
+def test_one_malformed_link_does_not_abort_extraction_for_the_whole_message():
+    """Regression test for the defect in Section 4.4.5, at the email level.
+
+    The email extractor runs the URL extractor over every link in the body, so
+    before the fix a single malformed link aborted extraction for the entire
+    message. The message here carries one unparseable link alongside two good
+    ones; all three must be counted and the feature vector must be complete.
+    """
+    body = (
+        "Please review http://[unbalanced.example.com/login and then "
+        "https://real.example.com/page and http://1.2.3.4/admin"
+    )
+    feats = extract_email_features(EmailInput(subject="Review these", body=body))
+
+    assert set(feats.keys()) == set(FEATURE_NAMES)
+    assert feats["num_urls_in_body"] == 3.0
+    # The well-formed IP link is still seen, so the malformed one did not stop
+    # the loop before reaching it.
+    assert feats["any_embedded_ip_url"] == 1.0

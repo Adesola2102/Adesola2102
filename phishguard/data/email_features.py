@@ -9,12 +9,13 @@ Feature families implemented, matching the methodology in Chapter Three:
 
 * Header features   - sender/reply-to domain mismatch, SPF/DKIM pass flags.
   These are populated from the caller-supplied ``EmailInput`` when header
-  metadata is available (e.g. a live .eml upload in the UI). The benchmark
-  training corpus (Enron-Spam, see scripts/download_data.py) only contains
-  subject/body text with no header block, so during training these features
-  are supplied with a neutral default and the classifier instead leans on
-  the richer body/URL-derived signals below. This is disclosed as a
-  build-environment data constraint in Chapter Four.
+  metadata is available (e.g. a live .eml upload in the UI). The training
+  corpora (Nazario + Nigerian Fraud for phishing, Enron ham for legitimate;
+  see scripts/download_data.py) contain only subject/body text with no
+  header block, so during training these features are supplied with a
+  neutral default and the classifier instead leans on the richer
+  body/URL-derived signals below. This is disclosed as a build-environment
+  data constraint in Chapter Four.
 * Body features     - urgency/pressure language, financial/credential
   keywords, generic-greeting detection, punctuation/formatting anomalies.
 * Embedded-URL features - counts and lexical properties of any links found

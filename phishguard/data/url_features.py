@@ -16,11 +16,62 @@ from __future__ import annotations
 
 import math
 import re
+from types import SimpleNamespace
 from urllib.parse import urlsplit
 
 import pandas as pd
 
 URL_REGEX = re.compile(r"(?:https?://|www\.)[^\s\"'<>]+", re.IGNORECASE)
+
+# A host label is a letter/digit run, optionally containing hyphens, and a
+# usable host needs at least two such labels separated by a dot (the
+# registrable domain plus a TLD). "localhost" and bare IPs are accepted
+# separately below since both are analysable hosts.
+_HOST_LABEL = r"[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?"
+_DOTTED_HOST = re.compile(rf"^{_HOST_LABEL}(?:\.{_HOST_LABEL})+$")
+_IPV4_HOST = re.compile(r"^\d{1,3}(?:\.\d{1,3}){3}$")
+
+
+def is_analysable_url(url: str) -> bool:
+    """True if ``url`` has a host that could plausibly be a web address.
+
+    The feature extractors are deliberately total: they accept any string and
+    always return a complete feature vector, because feature extraction runs
+    over tens of thousands of rows during dataset construction and a single
+    malformed input must not halt the process (Section 4.2.2). That design has
+    a consequence at the interface, where input arrives one item at a time from
+    a person: a bare word like "banana" is silently rewritten to
+    "http://banana", receives a full feature vector, and comes back with a
+    confident verdict and an explanation describing properties it does not
+    have. A verdict derived from meaningless features is worse than no verdict,
+    because the explanation layer exists to earn the user's trust.
+
+    This check gates the Input Layer so that such input is refused rather than
+    classified. It is intentionally structural and permissive - it asks only
+    whether there is a usable host, not whether the host resolves or the page
+    exists, since answering either would require the network call FR7 forbids.
+    """
+
+    if not url or not url.strip():
+        return False
+
+    raw = url.strip()
+    if "://" not in raw:
+        raw = "http://" + raw
+
+    try:
+        hostname = (urlsplit(raw).hostname or "").strip().lower()
+    except ValueError:
+        # Unparseable by the standard library (e.g. a broken bracketed IPv6
+        # literal). Feature extraction still handles these - see the fallback
+        # in extract_url_features - but they are not offerable as a host.
+        return False
+
+    if not hostname:
+        return False
+    if hostname == "localhost" or _IPV4_HOST.match(hostname):
+        return True
+    return bool(_DOTTED_HOST.match(hostname))
 
 FEATURE_NAMES = [
     "url_length",
@@ -104,9 +155,21 @@ def extract_url_features(url: str) -> dict:
     if "://" not in raw:
         raw = "http://" + raw
 
-    parts = urlsplit(raw)
-    hostname = (parts.hostname or "").lower()
-    netloc = parts.netloc.lower()
+    try:
+        parts = urlsplit(raw)
+        hostname = (parts.hostname or "").lower()
+        netloc = parts.netloc.lower()
+    except ValueError:
+        # Real-world phishing text sometimes embeds malformed/obfuscated
+        # "URLs" (stray brackets, broken bracketed-IPv6 syntax, etc.) that
+        # urlsplit rejects outright. Treat these as unparseable rather than
+        # crashing the pipeline: string-level features (length, digit ratio,
+        # special-char count below) still apply, host-structure features
+        # just fall back to their empty/absent defaults - a malformed URL is
+        # itself a signal a well-formed one would never produce.
+        parts = SimpleNamespace(scheme="", netloc="", path="", query="")
+        hostname = ""
+        netloc = ""
 
     registrable_domain, subdomains = _split_registrable_domain(hostname)
     # "www" is by far the most common legitimate subdomain label; counting it
