@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form | AltSchool Africa</title>
+</head>
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Global navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="form.html" aria-current="page">Application Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>AltSchool Africa Application Form</h1>
+    <p>
+      Fill in the form below to apply. Fields marked with an asterisk
+      (<abbr title="required">*</abbr>) are required.
+    </p>
+
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <p>
+          <label for="first-name">First Name <abbr title="required">*</abbr></label><br>
+          <input type="text" id="first-name" name="first_name" autocomplete="given-name" required>
+        </p>
+
+        <p>
+          <label for="last-name">Last Name <abbr title="required">*</abbr></label><br>
+          <input type="text" id="last-name" name="last_name" autocomplete="family-name" required>
+        </p>
+
+        <p>
+          <label for="email">Email Address <abbr title="required">*</abbr></label><br>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+        </p>
+
+        <p>
+          <label for="phone">Phone Number <abbr title="required">*</abbr></label><br>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+234 800 000 0000" required>
+        </p>
+
+        <p>
+          <label for="dob">Date of Birth</label><br>
+          <input type="date" id="dob" name="date_of_birth" autocomplete="bday">
+        </p>
+
+        <fieldset>
+          <legend>Gender <abbr title="required">*</abbr></legend>
+          <input type="radio" id="gender-female" name="gender" value="female" required>
+          <label for="gender-female">Female</label>
+          <input type="radio" id="gender-male" name="gender" value="male">
+          <label for="gender-male">Male</label>
+          <input type="radio" id="gender-none" name="gender" value="prefer-not-to-say">
+          <label for="gender-none">Prefer not to say</label>
+        </fieldset>
+
+        <p>
+          <label for="country">Country of Residence <abbr title="required">*</abbr></label><br>
+          <select id="country" name="country" autocomplete="country-name" required>
+            <option value="">-- Select your country --</option>
+            <option value="NG">Nigeria</option>
+            <option value="GH">Ghana</option>
+            <option value="KE">Kenya</option>
+            <option value="ZA">South Africa</option>
+            <option value="RW">Rwanda</option>
+            <option value="EG">Egypt</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="city">State / City</label><br>
+          <input type="text" id="city" name="city" autocomplete="address-level2">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Programme Details</legend>
+
+        <p>
+          <label for="school">School <abbr title="required">*</abbr></label><br>
+          <select id="school" name="school" required>
+            <option value="">-- Select a school --</option>
+            <option value="engineering">School of Software Engineering</option>
+            <option value="data">School of Data</option>
+            <option value="product">School of Product</option>
+            <option value="creative">School of Creative Arts</option>
+            <option value="business">School of Business</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="track">Track / Course <abbr title="required">*</abbr></label><br>
+          <select id="track" name="track" required>
+            <option value="">-- Select a track --</option>
+            <optgroup label="Software Engineering">
+              <option value="frontend">Frontend Engineering</option>
+              <option value="backend">Backend Engineering</option>
+              <option value="fullstack">FullStack Engineering</option>
+              <option value="cloud">Cloud Engineering</option>
+              <option value="cybersecurity">Cybersecurity</option>
+            </optgroup>
+            <optgroup label="Data">
+              <option value="data-analysis">Data Analysis</option>
+              <option value="data-science">Data Science</option>
+              <option value="data-engineering">Data Engineering</option>
+            </optgroup>
+            <optgroup label="Product">
+              <option value="product-design">Product Design</option>
+              <option value="product-management">Product Management</option>
+            </optgroup>
+          </select>
+        </p>
+
+        <p>
+          <label for="cohort">Preferred Cohort</label><br>
+          <select id="cohort" name="cohort">
+            <option value="karatu-2026">Karatu 2026</option>
+          </select>
+        </p>
+
+        <fieldset>
+          <legend>Highest Level of Education <abbr title="required">*</abbr></legend>
+          <input type="radio" id="edu-secondary" name="education" value="secondary" required>
+          <label for="edu-secondary">Secondary School</label><br>
+          <input type="radio" id="edu-diploma" name="education" value="diploma">
+          <label for="edu-diploma">Diploma / OND / NCE</label><br>
+          <input type="radio" id="edu-bachelor" name="education" value="bachelor">
+          <label for="edu-bachelor">Bachelor's Degree / HND</label><br>
+          <input type="radio" id="edu-postgrad" name="education" value="postgraduate">
+          <label for="edu-postgrad">Postgraduate Degree</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Do you have access to a laptop and internet? <abbr title="required">*</abbr></legend>
+          <input type="radio" id="laptop-yes" name="has_laptop" value="yes" required>
+          <label for="laptop-yes">Yes</label>
+          <input type="radio" id="laptop-no" name="has_laptop" value="no">
+          <label for="laptop-no">No</label>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend>Additional Information</legend>
+
+        <p>
+          <label for="referral">How did you hear about AltSchool Africa?</label><br>
+          <select id="referral" name="referral">
+            <option value="">-- Select an option --</option>
+            <option value="social-media">Social Media</option>
+            <option value="friend">Friend / Family</option>
+            <option value="search">Search Engine</option>
+            <option value="event">Event / Webinar</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="referral-code">Referral Code (optional)</label><br>
+          <input type="text" id="referral-code" name="referral_code">
+        </p>
+
+        <p>
+          <label for="motivation">Why do you want to join this programme?</label><br>
+          <textarea id="motivation" name="motivation" rows="5" cols="50"></textarea>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Account Details</legend>
+
+        <p>
+          <label for="password">Password <abbr title="required">*</abbr></label><br>
+          <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" aria-describedby="password-hint" required><br>
+          <small id="password-hint">Must be at least 8 characters.</small>
+        </p>
+
+        <p>
+          <label for="confirm-password">Confirm Password <abbr title="required">*</abbr></label><br>
+          <input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" minlength="8" required>
+        </p>
+      </fieldset>
+
+      <p>
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the AltSchool Africa Terms of Service and Privacy Policy <abbr title="required">*</abbr></label>
+      </p>
+
+      <p>
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <label for="newsletter">Send me updates and newsletters</label>
+      </p>
+
+      <p>
+        <button type="submit">Submit Application</button>
+        <button type="reset">Clear Form</button>
+      </p>
+    </form>
+
+    <p>Already have an account? <a href="https://portal.altschoolafrica.com/auth/signin">Sign in</a></p>
+  </main>
+
+  <footer>
+    <address>
+      Zulikhat Adesola Adeyanju<br>
+      Abuja, Nigeria<br>
+      Email: <a href="mailto:adesolayanju@gmail.com">adesolayanju@gmail.com</a>
+    </address>
+    <p><small>&copy; 2026 Zulikhat Adesola Adeyanju. All rights reserved.</small></p>
+  </footer>
+</body>
+</html>
