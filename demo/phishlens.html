@@ -716,7 +716,10 @@
   }
 
   function buildSentence(verdict, confidence, inputNoun, factors) {
-    var confPct = Math.round(confidence * 100);
+    // Floor, not round: rounding reported a 99.6%-confident prediction as
+    // "100% confidence", overstating certainty and disagreeing with the
+    // figure shown in the verdict banner.
+    var confPct = Math.floor(confidence * 100);
     var clauses = factors.slice(0, 3).map(function (f) { return describe(f.feature, f.value); });
     var reason;
     if (clauses.length === 0) reason = verdict === "phishing" ? "it shows several combined statistical warning signs" : "no significant phishing warning signs were detected";
@@ -826,8 +829,8 @@
     el("#verdict-pill").textContent = isPhish ? "Phishing" : "Legitimate";
     el("#verdict-headline").textContent = isPhish ? "This looks like phishing." : "This looks safe.";
     el("#verdict-meta").textContent = isPhish ? "Treat links and attachments with caution." : "No major phishing indicators were found.";
-    el("#confidence-num").textContent = Math.round(confidence * 100) + "%";
-    el("#confidence-bar").style.width = Math.round(confidence * 100) + "%";
+    el("#confidence-num").textContent = Math.floor(confidence * 100) + "%";
+    el("#confidence-bar").style.width = Math.floor(confidence * 100) + "%";
     el("#translated-sentence").textContent = sentence;
 
     var allFactorsRanked = featureNames.map(function (name, i) { return { feature: name, value: featureValues[i], raw: contributions[i] }; })

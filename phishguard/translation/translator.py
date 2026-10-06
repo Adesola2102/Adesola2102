@@ -11,6 +11,7 @@ with.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import List, Tuple
 
@@ -109,7 +110,7 @@ class PlainLanguageTranslator:
         prompt = PROMPT_TEMPLATE.format(
             input_desc=input_desc,
             verdict_upper=shap_result.predicted_class.upper(),
-            confidence_pct=round(shap_result.confidence * 100),
+            confidence_pct=math.floor(shap_result.confidence * 100),
             factor_list=factor_descriptions,
             input_noun=input_noun,
         )

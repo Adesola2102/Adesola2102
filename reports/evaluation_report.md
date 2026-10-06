@@ -23,17 +23,17 @@ Automated comparison of the LLM Translation Layer's plain-language sentences aga
 **Input:** `https://freberg.westnet.com/`  
 **True label:** legitimate | **Predicted:** legitimate (86.5%) — *correct*  
 **Raw SHAP output:** [SHAP] predicted_class=legitimate, confidence=0.865, base_value=0.499, top_features=(num_subdomains: +0.147, path_length: -0.087, digit_ratio: -0.078, url_length: -0.075, num_digits: -0.063)  
-**Plain-language translation:** This web link looks LEGITIMATE with 87% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.
+**Plain-language translation:** This web link looks LEGITIMATE with 86% confidence: it uses a common, mainstream domain ending, is not dominated by digits, and does not mix unusual digits into the web address.
 
 **Input:** `https://www.uvm.edu/~ofabweb/`  
 **True label:** legitimate | **Predicted:** legitimate (99.8%) — *correct*  
 **Raw SHAP output:** [SHAP] predicted_class=legitimate, confidence=0.998, base_value=0.499, top_features=(num_dots: -0.088, num_subdomains: -0.065, digit_ratio: -0.061, domain_entropy: -0.061, url_length: -0.058)  
-**Plain-language translation:** This web link looks LEGITIMATE with 100% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
+**Plain-language translation:** This web link looks LEGITIMATE with 99% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
 
 **Input:** `http://www.geocities.com/kurisumasu_jbt/`  
 **True label:** legitimate | **Predicted:** legitimate (99.6%) — *correct*  
 **Raw SHAP output:** [SHAP] predicted_class=legitimate, confidence=0.996, base_value=0.499, top_features=(num_subdomains: -0.095, num_dots: -0.077, digit_ratio: -0.058, domain_length: -0.048, num_digits: -0.048)  
-**Plain-language translation:** This web link looks LEGITIMATE with 100% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
+**Plain-language translation:** This web link looks LEGITIMATE with 99% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
 
 **Input:** `http://www.jasonmeador.com/`  
 **True label:** legitimate | **Predicted:** legitimate (99.2%) — *correct*  
@@ -43,14 +43,14 @@ Automated comparison of the LLM Translation Layer's plain-language sentences aga
 **Input:** `https://www.uvm.edu/~uvmsbf/`  
 **True label:** legitimate | **Predicted:** legitimate (99.8%) — *correct*  
 **Raw SHAP output:** [SHAP] predicted_class=legitimate, confidence=0.998, base_value=0.499, top_features=(num_dots: -0.088, num_subdomains: -0.065, domain_entropy: -0.062, digit_ratio: -0.061, url_length: -0.058)  
-**Plain-language translation:** This web link looks LEGITIMATE with 100% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
+**Plain-language translation:** This web link looks LEGITIMATE with 99% confidence: it has a simple, normal domain structure, is not dominated by digits, and uses a common, mainstream domain ending.
 
 ### Email examples
 
 **Input:** `re :`  
 **True label:** legitimate | **Predicted:** legitimate (88.5%) — *correct*  
 **Raw SHAP output:** [SHAP] predicted_class=legitimate, confidence=0.885, base_value=0.500, top_features=(all_caps_word_ratio: -0.309, financial_keyword_count: +0.098, urgent_keyword_count: -0.060, non_alpha_ratio: -0.049, link_to_word_ratio: -0.021)  
-**Plain-language translation:** This email looks LEGITIMATE with 89% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.
+**Plain-language translation:** This email looks LEGITIMATE with 88% confidence: it does not rely on capital letters for emphasis, addresses the recipient normally rather than with a generic greeting, and does not use urgent or pressuring language.
 
 **Input:** `re : project tracking database access`  
 **True label:** legitimate | **Predicted:** legitimate (96.2%) — *correct*  

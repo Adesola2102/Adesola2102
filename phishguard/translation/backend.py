@@ -40,6 +40,7 @@ that swapping one in requires no code change, just
 
 from __future__ import annotations
 
+import math
 import os
 import re
 import textwrap
@@ -82,7 +83,12 @@ class TemplateBackend(LLMBackend):
 
     def generate(self, prompt: str, context: dict) -> str:
         verdict = context["verdict"]
-        confidence_pct = round(context["confidence"] * 100)
+        # Floor, not round: rounding let a 99.6%-confident prediction be
+        # reported as "100% confidence", which both overstates the model's
+        # certainty and contradicts the confidence the interface displays
+        # beside the sentence. Flooring can only ever understate, and 100%
+        # is now reached only when every tree in the forest agreed.
+        confidence_pct = math.floor(context["confidence"] * 100)
         input_noun = context.get("input_noun", "message")
         factors = context["factors"]  # list of (feature, value, is_risk)
 
