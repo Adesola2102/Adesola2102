@@ -9,8 +9,8 @@ Master's Project:
 > Technology, School of Computing, Miva Open University, Abuja.
 
 The system is a layered, service-oriented architecture designed for
-local-first deployment. A seven-layer pipeline — Input → Feature Extraction →
-Prediction → XAI Attribution → Translation → Generation → Presentation — takes
+local-first deployment. A seven-layer pipeline - Input → Feature Extraction →
+Prediction → XAI Attribution → Translation → Generation → Presentation - takes
 an email or URL through to a plain-language explanation, reconciling SHAP and
 LIME attributions and enforcing semantic coherence before any sentence is
 generated. Each layer consumes only the output of the layer before it, so the
@@ -49,7 +49,7 @@ pytest -q
 streamlit run app/streamlit_app.py
 ```
 
-Models and reports are committed, so steps 1–3 are only needed to reproduce
+Models and reports are committed, so steps 1-3 are only needed to reproduce
 them. They do reproduce: re-running the training scripts on the committed data
 regenerates both `.joblib` models byte-for-byte identically, along with
 `url_classifier_metrics.json`, `email_classifier_metrics.json`,
@@ -102,11 +102,11 @@ and the reasoning behind two deliberate construction choices (why the
 legitimate URL class stops at roughly 1,000 rows, and why the http/https scheme
 is re-randomised):
 
-- **Email — 6,000 messages, 3,000 phishing / 3,000 legitimate.** Phishing from
+- **Email - 6,000 messages, 3,000 phishing / 3,000 legitimate.** Phishing from
   the Nazario Phishing Corpus and a Nigerian/419 advance-fee fraud set;
   legitimate from the ham portion of the Enron corpus (Metsis, Androutsopoulos
   & Paliouras, 2006).
-- **URL — 1,995 URLs, 1,000 phishing / 995 legitimate.** Phishing from
+- **URL - 1,995 URLs, 1,000 phishing / 995 legitimate.** Phishing from
   PhishTank's verified feed and Phishing.Database's active-links list;
   legitimate from a labelled set that preserves real paths and query strings
   rather than bare domains.
@@ -129,13 +129,13 @@ Full numbers in `reports/*_classifier_metrics.json`,
 | URL (Random Forest) | 92.23% | 91.22% | 93.50% | 92.35% | 399 |
 | Email (Random Forest) | 96.75% | 98.95% | 94.50% | 96.68% | 1,200 |
 
-**Explanation readability** — the project's central result, measured over 60
+**Explanation readability** - the project's central result, measured over 60
 predictions by comparing each translated sentence against the raw SHAP/LIME
 output it replaces:
 
 | | URL | Email |
 |---|---|---|
-| Flesch Reading Ease, raw | 8.7 | −51.3 |
+| Flesch Reading Ease, raw | 8.7 | -51.3 |
 | Flesch Reading Ease, translated | 36.0 | 24.0 |
 | **Improvement** | **+27.3 points** | **+75.4 points** |
 
@@ -144,7 +144,7 @@ This is a property of applying a syllable-counting prose formula to non-prose
 attribution output, and is reported as a methodological finding in Chapter Five
 rather than suppressed.
 
-**Performance** — 0.11 s mean per analysis on a single CPU core with no GPU,
+**Performance** - 0.11 s mean per analysis on a single CPU core with no GPU,
 measured over 15 runs; 12.2 MB of models on disk.
 
 ## Design notes / known limitations
@@ -155,14 +155,14 @@ Strategies") and Chapter Six ("Conclusion"):
 1. **Translation backend.** Ships with a deterministic, template-based
    plain-language generator (`TemplateBackend`) rather than a downloaded LLM,
    because this build environment blocks outbound access to Hugging Face. The
-   backend interface (`phishguard/translation/backend.py`) is pluggable — an
+   backend interface (`phishguard/translation/backend.py`) is pluggable - an
    `LlamaCppBackend` for a local quantized GGUF model is implemented, and
    activates automatically if `PHISHGUARD_LLM_MODEL_PATH` points to a real
    model file. **It has never been run against real weights.** Its
    availability gating, offline fallback and output post-processing are
    covered by tests, and a separate integration test drives the real pipeline
    through a non-template backend to evidence that the generator is genuinely
-   replaceable — but no result anywhere in this project describes the output
+   replaceable - but no result anywhere in this project describes the output
    of a language model.
 2. **Faithfulness filter.** The translation layer only surfaces SHAP/LIME
    factors whose direction is semantically coherent with their actual value
@@ -176,7 +176,7 @@ Strategies") and Chapter Six ("Conclusion"):
    is in `docs/`.
 
 Three of the tests are regression tests written after specific defects found
-during development — the faithfulness failure, a malformed-URL crash, and an
+during development - the faithfulness failure, a malformed-URL crash, and an
 explanation-reproducibility defect in which LIME's stateful random generator
 advanced between calls. Each reproduces its bug and fails without the
 corresponding fix.

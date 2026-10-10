@@ -1,5 +1,5 @@
 <!doctype html>
-<title>PhishLens — plain-English phishing checker</title>
+<title>PhishLens - plain-English phishing checker</title>
 <style>
   :root {
     --ink-950: #12151b;
@@ -326,10 +326,10 @@
         <div class="brand-tag">a phishing checker that explains itself in plain English</div>
       </div>
     </div>
-    <div class="badge-proj">In-browser demo of the translation-layer system built for Zulikhat Adesola Adeyanju&rsquo;s MIT project at Miva Open University — the full research system (exact SHAP + LIME, 300-tree classifiers) lives in the Python codebase.</div>
+    <div class="badge-proj">In-browser demo of the translation-layer system built for Zulikhat Adesola Adeyanju&rsquo;s MIT project at Miva Open University - the full research system (exact SHAP + LIME, 300-tree classifiers) lives in the Python codebase.</div>
   </header>
 
-  <p class="lede">Paste an email or a web link below. PhishLens will tell you whether it looks like <strong>phishing</strong> or <strong>legitimate</strong>, and — unlike most security tools — explain <em>why</em> in one plain sentence instead of a wall of statistics.</p>
+  <p class="lede">Paste an email or a web link below. PhishLens will tell you whether it looks like <strong>phishing</strong> or <strong>legitimate</strong>, and - unlike most security tools - explain <em>why</em> in one plain sentence instead of a wall of statistics.</p>
 
   <div class="console">
     <div class="tabs" role="tablist" aria-label="What to check">
@@ -349,7 +349,7 @@
       <div class="examples" id="email-examples"></div>
       <div class="run-row">
         <button class="primary" id="run-email">Check this email</button>
-        <span class="run-hint">Nothing is sent anywhere — this runs entirely in your browser.</span>
+        <span class="run-hint">Nothing is sent anywhere - this runs entirely in your browser.</span>
       </div>
     </div>
 
@@ -361,20 +361,20 @@
       <div class="examples" id="url-examples"></div>
       <div class="run-row">
         <button class="primary" id="run-url">Check this link</button>
-        <span class="run-hint">Nothing is sent anywhere — this runs entirely in your browser.</span>
+        <span class="run-hint">Nothing is sent anywhere - this runs entirely in your browser.</span>
       </div>
     </div>
   </div>
 
   <section class="results" id="results" hidden aria-live="polite">
     <div class="verdict-banner" id="verdict-banner">
-      <span class="verdict-pill" id="verdict-pill">—</span>
+      <span class="verdict-pill" id="verdict-pill">-</span>
       <div>
-        <div class="verdict-headline" id="verdict-headline">—</div>
-        <div class="verdict-meta" id="verdict-meta">—</div>
+        <div class="verdict-headline" id="verdict-headline">-</div>
+        <div class="verdict-meta" id="verdict-meta">-</div>
       </div>
       <div class="confidence-track">
-        <span class="num" id="confidence-num">—</span>
+        <span class="num" id="confidence-num">-</span>
         <div class="bar-bg"><div class="bar-fg" id="confidence-bar" style="width:0%"></div></div>
       </div>
     </div>
@@ -386,21 +386,21 @@
       </div>
       <div class="card translated">
         <div class="card-eyebrow">✦ Plain-language explanation</div>
-        <div class="sentence" id="translated-sentence">—</div>
+        <div class="sentence" id="translated-sentence">-</div>
       </div>
     </div>
 
     <details class="tech">
       <summary><span class="chev">▶</span> How the model decided (technical detail)</summary>
       <div class="tech-body">
-        <p class="tech-note">Each bar is how much that feature pushed the decision toward <strong>phishing</strong> (right, red) or <strong>legitimate</strong> (left, green), computed from the actual decision paths taken through the trained forest — a fast, in-browser relative of SHAP.</p>
+        <p class="tech-note">Each bar is how much that feature pushed the decision toward <strong>phishing</strong> (right, red) or <strong>legitimate</strong> (left, green), computed from the actual decision paths taken through the trained forest - a fast, in-browser relative of SHAP.</p>
         <div id="contrib-rows"></div>
       </div>
     </details>
   </section>
 
   <footer class="page">
-    <p>This demo runs a lighter, browser-sized version of the real classifiers (<span id="model-stats">…</span>) trained on the same data described in Chapter Four of the project report. It uses real trained decision trees and the exact same plain-language phrase engine as the full system — only the depth/size of the forest and the attribution method are simplified for speed and portability. No data you type here ever leaves your device.</p>
+    <p>This demo runs a lighter, browser-sized version of the real classifiers (<span id="model-stats">…</span>) trained on the same data described in Chapter Four of the project report. It uses real trained decision trees and the exact same plain-language phrase engine as the full system - only the depth/size of the forest and the attribution method are simplified for speed and portability. No data you type here ever leaves your device.</p>
   </footer>
 </div>
 

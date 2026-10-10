@@ -7,7 +7,7 @@ of IP addresses, number of subdomains, entropy, URL-shortener use, etc.) and
 the feature set used by the PhishTank / ISCX-URL-2016-style literature cited
 in Chapter Two.
 
-No live network calls (WHOIS, DNS, content fetch) are made — the module is
+No live network calls (WHOIS, DNS, content fetch) are made - the module is
 purely lexical/string-based so that the classifier can run fully offline
 (NFR5 / FR7 in Chapter Three).
 """

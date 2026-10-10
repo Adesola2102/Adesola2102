@@ -41,7 +41,7 @@ from phishguard.data.url_features import extract_url_features, is_analysable_url
 from phishguard.pipeline import PhishingExplanationPipeline  # noqa: E402
 from phishguard.translation.phrases import describe, is_coherent  # noqa: E402
 
-st.set_page_config(page_title="PhishGuard — Live Pipeline View", page_icon="🛡️",
+st.set_page_config(page_title="PhishGuard - Live Pipeline View", page_icon="🛡️",
                    layout="wide")
 
 
@@ -64,34 +64,34 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
     total = 0.0
 
     # ------------------------------------------------------- 1. input
-    with st.status("**Layer 1 — Input**", expanded=True) as s:
+    with st.status("**Layer 1 - Input**", expanded=True) as s:
         t = time.perf_counter()
         ok = is_analysable_url(raw) if is_url else bool((email.subject + email.body).strip())
         dt = time.perf_counter() - t
         total += dt
         st.code(raw, language=None)
         if not ok:
-            s.update(label=f"**Layer 1 — Input** · rejected · {ms(dt)}",
+            s.update(label=f"**Layer 1 - Input** · rejected · {ms(dt)}",
                      state="error", expanded=True)
             st.error(
                 "This input is not structurally analysable, so the pipeline stops here. "
-                "No verdict and no explanation are produced — the system declines rather "
+                "No verdict and no explanation are produced - the system declines rather "
                 "than guessing."
             )
             return
-        st.success(f"Accepted — structurally analysable. Validation took {ms(dt)}.")
-        s.update(label=f"**Layer 1 — Input** · accepted · {ms(dt)}", state="complete", expanded=keep_open)
+        st.success(f"Accepted - structurally analysable. Validation took {ms(dt)}.")
+        s.update(label=f"**Layer 1 - Input** · accepted · {ms(dt)}", state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ------------------------------------- 2. feature extraction
-    with st.status("**Layer 2 — Feature extraction**", expanded=True) as s:
+    with st.status("**Layer 2 - Feature extraction**", expanded=True) as s:
         t = time.perf_counter()
         feats = extract_url_features(raw) if is_url else extract_email_features(email)
         dt = time.perf_counter() - t
         total += dt
         st.caption(
             f"The string becomes {len(names)} numbers. This is the only step that "
-            "loses information — nothing downstream sees the original text."
+            "loses information - nothing downstream sees the original text."
         )
         frame = pd.DataFrame(
             [{"feature": n, "value": round(float(feats[n]), 4)} for n in names]
@@ -101,12 +101,12 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
         for col, chunk in zip((c1, c2, c3),
                               (frame[:third], frame[third:2 * third], frame[2 * third:])):
             col.dataframe(chunk, hide_index=True, use_container_width=True)
-        s.update(label=f"**Layer 2 — Feature extraction** · {len(names)} features · {ms(dt)}",
+        s.update(label=f"**Layer 2 - Feature extraction** · {len(names)} features · {ms(dt)}",
                  state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ------------------------------------------------ 3. classification
-    with st.status("**Layer 3 — Classification (Random Forest, 300 trees)**",
+    with st.status("**Layer 3 - Classification (Random Forest, 300 trees)**",
                    expanded=True) as s:
         t = time.perf_counter()
         proba = clf.predict_proba(feats)[0]
@@ -121,14 +121,14 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
         st.progress(float(confidence))
         st.caption(
             "Confidence is the proportion of the 300 trees that voted for the "
-            "predicted class — not a calibrated probability."
+            "predicted class - not a calibrated probability."
         )
-        s.update(label=f"**Layer 3 — Classification** · {label.upper()} · {ms(dt)}",
+        s.update(label=f"**Layer 3 - Classification** · {label.upper()} · {ms(dt)}",
                  state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ----------------------------------------------- 4. XAI attribution
-    with st.status("**Layer 4 — XAI attribution (SHAP + LIME)**", expanded=True) as s:
+    with st.status("**Layer 4 - XAI attribution (SHAP + LIME)**", expanded=True) as s:
         t = time.perf_counter()
         shap_result = explainer.explain_shap(feats)
         t_shap = time.perf_counter() - t
@@ -144,7 +144,7 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
 
         left, right = st.columns(2)
         with left:
-            st.markdown(f"**SHAP** — exact Shapley values · {ms(t_shap)}")
+            st.markdown(f"**SHAP** - exact Shapley values · {ms(t_shap)}")
             sdf = pd.DataFrame(
                 [{"feature": c.feature, "contribution": round(c.contribution, 4)}
                  for c in shap_result.top(8)]
@@ -153,23 +153,23 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
             st.caption(
                 f"base {shap_result.base_value:.4f} + contributions {contrib_sum:+.4f} "
                 f"= **{reconstructed:.4f}**, and the model predicted "
-                f"**{proba[pos]:.4f}** — the attribution reconstructs the prediction "
+                f"**{proba[pos]:.4f}** - the attribution reconstructs the prediction "
                 f"to {abs(reconstructed - proba[pos]):.1e}."
             )
         with right:
-            st.markdown(f"**LIME** — local linear approximation · {ms(t_lime)}")
+            st.markdown(f"**LIME** - local linear approximation · {ms(t_lime)}")
             ldf = pd.DataFrame(
                 [{"feature": c.feature, "contribution": round(c.contribution, 4)}
                  for c in lime_result.top(8)]
             )
             st.bar_chart(ldf.set_index("feature")["contribution"])
             st.caption("Fitted on 400 perturbed samples drawn around this one input.")
-        s.update(label=f"**Layer 4 — XAI attribution** · SHAP {ms(t_shap)}, "
+        s.update(label=f"**Layer 4 - XAI attribution** · SHAP {ms(t_shap)}, "
                        f"LIME {ms(t_lime)}", state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ------------------------------------------------ 5. reconciliation
-    with st.status("**Layer 5 — Reconciliation**", expanded=True) as s:
+    with st.status("**Layer 5 - Reconciliation**", expanded=True) as s:
         t = time.perf_counter()
 
         def normalise(result):
@@ -185,7 +185,7 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
         total += dt
 
         st.caption(
-            f"Largest SHAP weight {s_max:.4f}; largest LIME weight {l_max:.4f} — "
+            f"Largest SHAP weight {s_max:.4f}; largest LIME weight {l_max:.4f} - "
             f"{max(s_max, l_max) / min(s_max, l_max):.1f}× apart, so each is divided "
             "by its own maximum before the two are averaged."
         )
@@ -195,11 +195,11 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
                  "LIME (norm)": round(l_norm.get(f, 0.0), 3), "mean": round(sc, 3)}
                 for f, sc in ranking[:8]
             ]), hide_index=True, use_container_width=True)
-        s.update(label=f"**Layer 5 — Reconciliation** · {ms(dt)}", state="complete", expanded=keep_open)
+        s.update(label=f"**Layer 5 - Reconciliation** · {ms(dt)}", state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # --------------------------------------------- 6. coherence check
-    with st.status("**Layer 6 — Coherence check**", expanded=True) as s:
+    with st.status("**Layer 6 - Coherence check**", expanded=True) as s:
         t = time.perf_counter()
         positive = label == "phishing"
         aligned = [(f, sc) for f, sc in ranking
@@ -215,11 +215,11 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
             + (f" → **{len(dropped)} rejected**" if dropped else "")
         )
         if dropped:
-            st.error("**Rejected — these would have been false if spoken aloud:**")
+            st.error("**Rejected - these would have been false if spoken aloud:**")
             for f, sc in dropped:
                 rank = [x[0] for x in ranking].index(f) + 1
                 st.markdown(
-                    f"- `{f}` = {values[f]:.2f} (ranked #{rank} by weight) — would have "
+                    f"- `{f}` = {values[f]:.2f} (ranked #{rank} by weight) - would have "
                     f"claimed *“it {describe(f, values[f])}”* as a reason this is "
                     f"**{label.upper()}**."
                 )
@@ -228,13 +228,13 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
                 "from the sentence, not hidden from the user."
             )
         else:
-            st.success("Every aligned factor is coherent on this input — nothing rejected.")
-        s.update(label=f"**Layer 6 — Coherence check** · {len(dropped)} rejected · {ms(dt)}",
+            st.success("Every aligned factor is coherent on this input - nothing rejected.")
+        s.update(label=f"**Layer 6 - Coherence check** · {len(dropped)} rejected · {ms(dt)}",
                  state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ------------------------------------------------- 7. generation
-    with st.status("**Layer 7 — Translation and generation**", expanded=True) as s:
+    with st.status("**Layer 7 - Translation and generation**", expanded=True) as s:
         # Only the translation step is timed here. Calling analyze_url/analyze_email
         # would re-run feature extraction, the forest and both explainers, and report
         # all of that as the generation cost.
@@ -248,16 +248,16 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
             st.markdown(f"`{feature}` = {value:.2f} → *“{describe(feature, value)}”*")
         with st.expander("The exact prompt handed to the generation backend"):
             st.code(translation.prompt, language="text")
-        st.caption(f"Backend: `{translation.backend_name}` — deterministic, "
+        st.caption(f"Backend: `{translation.backend_name}` - deterministic, "
                    "offline, no network call.")
-        s.update(label=f"**Layer 7 — Translation and generation** · {ms(dt)}",
+        s.update(label=f"**Layer 7 - Translation and generation** · {ms(dt)}",
                  state="complete", expanded=keep_open)
     time.sleep(pace)
 
     # ----------------------------------------------------- 8. output
     st.markdown("### Final output")
     colour = "🔴" if label == "phishing" else "🟢"
-    st.subheader(f"{colour} {label.upper()} — {confidence:.1%} confidence")
+    st.subheader(f"{colour} {label.upper()} - {confidence:.1%} confidence")
     st.info(translation.sentence)
     st.caption(
         f"Total computation across all layers: **{ms(total)}**. The pauses between "
@@ -267,7 +267,7 @@ def run_pipeline(kind: str, raw: str, email: EmailInput | None, pace: float,
 
 
 def main() -> None:
-    st.title("🛡️ PhishGuard — Live Pipeline View")
+    st.title("🛡️ PhishGuard - Live Pipeline View")
     st.caption(
         "The same analysis the main interface performs, with every layer surfaced "
         "as it runs. Works on any input."
@@ -293,7 +293,7 @@ def main() -> None:
     with url_tab:
         url = st.text_input("Web address", placeholder="http://example.com/login",
                             key="url_in")
-        st.caption("Try anything — including something that is not a link at all.")
+        st.caption("Try anything - including something that is not a link at all.")
         if st.button("Run the pipeline", key="run_url", type="primary"):
             if not url.strip():
                 st.warning("Enter a web address first.")

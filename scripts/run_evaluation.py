@@ -126,17 +126,17 @@ def render_markdown_report(url_rows: list, email_rows: list, url_summary: dict,
         lines.append("")
         lines.append(f"- Sample accuracy on this evaluation batch: **{summary['accuracy_on_sample']:.1%}**")
         lines.append(
-            f"- Flesch Reading Ease — raw SHAP text: **{summary['raw_flesch_reading_ease_avg']:.1f}** "
+            f"- Flesch Reading Ease - raw SHAP text: **{summary['raw_flesch_reading_ease_avg']:.1f}** "
             f"vs translated sentence: **{summary['translated_flesch_reading_ease_avg']:.1f}** "
             f"(higher is easier to read)"
         )
         lines.append(
-            f"- Flesch-Kincaid Grade Level — raw SHAP text: **{summary['raw_flesch_kincaid_grade_avg']:.1f}** "
+            f"- Flesch-Kincaid Grade Level - raw SHAP text: **{summary['raw_flesch_kincaid_grade_avg']:.1f}** "
             f"vs translated sentence: **{summary['translated_flesch_kincaid_grade_avg']:.1f}** "
             f"(lower is easier to read)"
         )
         lines.append(
-            f"- Average length — raw SHAP text: **{summary['raw_word_count_avg']:.1f} words** "
+            f"- Average length - raw SHAP text: **{summary['raw_word_count_avg']:.1f} words** "
             f"vs translated sentence: **{summary['translated_word_count_avg']:.1f} words**"
         )
         lines.append("")
@@ -151,7 +151,7 @@ def render_markdown_report(url_rows: list, email_rows: list, url_summary: dict,
             lines.append(f"**Input:** `{r['input']}`  ")
             lines.append(
                 f"**True label:** {r['true_label']} | **Predicted:** {r['predicted_label']} "
-                f"({r['confidence']:.1%}) — *{match}*  "
+                f"({r['confidence']:.1%}) - *{match}*  "
             )
             lines.append(f"**Raw SHAP output:** {r['raw_shap_text']}  ")
             lines.append(f"**Plain-language translation:** {r['translated_sentence']}")

@@ -64,13 +64,13 @@ def render_result(analysis) -> None:
     shap_col, lime_col = st.columns(2)
 
     with shap_col:
-        st.markdown("**SHAP (TreeExplainer) — top contributing features**")
+        st.markdown("**SHAP (TreeExplainer) - top contributing features**")
         shap_df = contributions_frame(analysis.shap)
         st.bar_chart(shap_df.set_index("feature")["contribution"])
         st.dataframe(shap_df, hide_index=True, use_container_width=True)
 
     with lime_col:
-        st.markdown("**LIME (Tabular Explainer) — top contributing features**")
+        st.markdown("**LIME (Tabular Explainer) - top contributing features**")
         lime_df = contributions_frame(analysis.lime)
         st.bar_chart(lime_df.set_index("feature")["contribution"])
         st.dataframe(lime_df, hide_index=True, use_container_width=True)
@@ -180,7 +180,7 @@ def main() -> None:
         "Built for the MIT Professional Master's Project: "
         "\"Explainable URL/Email Phishing Detection System Using Random Forest "
         "and SHAP-LIME Outputs for Generating Human-Readable Phishing Alerts\" "
-        "— runs fully offline/locally (no external API calls)."
+        "- runs fully offline/locally (no external API calls)."
     )
 
 
